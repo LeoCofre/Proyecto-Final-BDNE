@@ -11,12 +11,14 @@ def conectar():
     try:
         conn = mysql.connector.connect(
             host="localhost",
-            database="ecotech solutions",
-            user = "usuario_ecotech",
-            password = "user_ecotech"
+            database="bd_botilleria",
+            user="administrador",
+            password=".Inacap2024."
         )
-        return conn
-    except Error as e :
-        print(f"No se pudo conectar a la base de datos {e}")
-        return None
+        if conn.is_connected():
+            print(" Conexión exitosa a bd_botilleria")
+            return conn
+    except Error as e:
+        print(f" No se pudo conectar a la base de datos: {e}")
+    return None
 

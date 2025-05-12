@@ -1,7 +1,7 @@
 from controlador.ControladorVendedor import agregar_vendedor_db, buscar_vendedor_db, editar_vendedor_db, eliminar_vendedor_db
 from modelo.VendedorSQL import Vendedor
 
-def menu_Vendedores():
+def menu_vendedores():
     while True:
         print("\n===== Menú Vendedores =====")
         print("1.- Ingresar")

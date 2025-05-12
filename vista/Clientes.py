@@ -1,7 +1,7 @@
 from controlador.ControladorCliente import agregar_cliente_db, buscar_cliente_db, eliminar_cliente_db, editar_cliente_db
 from modelo.ClienteSQL import Cliente
 
-def menu_Clientes():
+def menu_clientes():
     while True:
         print("\n===== Menú Clientes =====")
         print("1.- Ingresar")
@@ -88,7 +88,7 @@ def modificar_cliente():
     
 def eliminar_cliente():
     rut = input("Ingrese el rut del cliente a eliminar: ")
-    cliente = buscar_cliente_registrado(rut)
+    cliente = buscar_cliente_db(rut)
     if cliente is not None:
         print("Cliente Encontrado:")
         print(f"Nombre:{cliente.get_nombre()}")

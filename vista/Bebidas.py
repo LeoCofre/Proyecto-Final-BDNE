@@ -8,7 +8,7 @@ def menu_bebidas():
     print("4.- Eliminar")
 
 def main_bebida():
-    opcion = input("Elija una opción")
+    opcion = input("=====Elija una opción====")
     while True:
         if opcion == 1:
             ingresar_bebida()

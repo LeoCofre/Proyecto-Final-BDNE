@@ -1,7 +1,7 @@
-from vista.Bebidas import menu_Bebidas
-from vista.Clientes import menu_Clientes
-from vista.Pedido import menu_Pedido
-from vista.Vendedores import menu_vendedor
+from vista.Bebidas import menu_bebidas
+from vista.Clientes import menu_clientes
+from vista.Pedidos import menu_pedidos
+from vista.Vendedores import menu_vendedores
 import os
 
 
@@ -19,19 +19,19 @@ def mostrar_menu_principal():
     print("===========================")
     opcion = int(input("Ingrese una opcion: "))
     return opcion
-
-def iniciar_menu(usuario):
+def iniciar_menu_prueba():
+    print("___Probando____")
+def iniciar_menu():
+    print("_____Aqui voy___")
     while True:
         opcion = mostrar_menu_principal()
         if opcion == 1:
-            menu_Clientes()
+            menu_clientes()
         elif opcion == 2:
-            menu_Bebidas()
+            menu_bebidas()
         elif opcion == 3:
-            menu_vendedor()
+            menu_vendedores
         elif opcion == 4:
-            menu_Pedido()
-        elif opcion == 6:
-            mostrar_menu(usuario)
+            menu_pedidos()
         else:
             print("Opción no válida, intente de nuevo.")

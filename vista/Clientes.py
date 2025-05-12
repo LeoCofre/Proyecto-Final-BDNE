@@ -51,13 +51,13 @@ def buscar_cliente():
 
 def modificar_cliente():
     try:
-        nombre_cliente=input("Ingrese el nombre del cliente que desea editar: ")
-        cliente=buscar_cliente_db(nombre_cliente)
+        rut_cliente=input("Ingrese el rut del cliente que desea editar: ")
+        cliente=buscar_cliente_db(rut_cliente)
         if not cliente:
-            print("No se encontro el cliente con ese nombre")
+            print("No se encontro el cliente con ese rut")
             return
         
-        print(f"Cliente encontrado:ID: {cliente.get_id()},Nombre: {cliente.get_nombre()},Apellido: {cliente.get_apellido()},Rut: {cliente.get_rut(),}"
+        print(f"Cliente encontrado:ID: {cliente.get_id()},Nombre: {cliente.get_nombres()},Apellido: {cliente.get_apellidos()},Rut: {cliente.get_rut(),}"
               f"Fecha Nacimiento: {cliente.get_fecha_nacimiento()},Direccion: {cliente.get_direccion()},Telefono: {cliente.get_telefono()},Correo: {cliente.get_correo()}")
         nuevo_nombre = input("Ingrese el nuevo nombre del cliente: ")
         nuevo_apellido = input("Ingrese el nuevo apellido del cliente: ")
@@ -68,9 +68,9 @@ def modificar_cliente():
         nuevo_correo = input("Ingrese el nuevo correo del cliente (presione Enter para mantener el actual:")
 
         if nuevo_nombre:
-            cliente.set_nombre(nuevo_nombre)
+            cliente.set_nombres(nuevo_nombre)
         if nuevo_apellido:
-            cliente.set_apellido(nuevo_apellido)
+            cliente.set_apellidos(nuevo_apellido)
         if nuevo_rut:
             cliente.set_rut(nuevo_rut)
         if nuevo_fecha_nacimiento:

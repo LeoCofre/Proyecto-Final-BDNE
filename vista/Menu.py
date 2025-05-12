@@ -19,8 +19,8 @@ def mostrar_menu_principal():
     print("===========================")
     opcion = int(input("Ingrese una opcion: "))
     return opcion
-def iniciar_menu_prueba():
-    print("___Probando____")
+
+    
 def iniciar_menu():
     print("_____Aqui voy___")
     while True:
@@ -30,8 +30,9 @@ def iniciar_menu():
         elif opcion == 2:
             menu_bebidas()
         elif opcion == 3:
-            menu_vendedores
+            menu_vendedores()
         elif opcion == 4:
             menu_pedidos()
         else:
             print("Opción no válida, intente de nuevo.")
+ 

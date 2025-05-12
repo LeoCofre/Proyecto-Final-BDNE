@@ -42,7 +42,7 @@ def buscar_cliente():
     rut_buscar = buscar_cliente_db(rut)
     if rut_buscar:
         print("El cliente existe")
-        print(rut)
+        print(f"Rut: {rut_buscar.get_rut()}")
         print(f"Nombres: {rut_buscar.get_nombres()}")
         print(f"Apellidos: {rut_buscar.get_apellidos()}")
     else:

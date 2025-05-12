@@ -1,4 +1,7 @@
 from vista.Bebidas import menu_bebidas
+from vista.Clientes import menu_clientes
+from vista.Vendedores import menu_vendedores
+from vista.Pedidos import menu_pedidos
 
 print("Menu Principal")
 print("1.- Menu bebidad")

@@ -1,5 +1,5 @@
 from modelo.BebidaSQL import BebidaSql
-from controlador.ControladorBebida import agregar_bebida, buscar_bebida_registrada, eliminar_bebida
+from controlador.ControladorBebida import agregar_bebida, buscar_bebida_registrada, editar_bebida, borrar_bebida
 def menu_bebidas():
     print("Menu bebidas")
     print("1.- Ingresar ")
@@ -72,6 +72,8 @@ def main_bebida():
             except Exception as e:
                 print(f"Error al editar bebida: {e}")                
 
+
+
         def eliminar_bebida():
                 print("____Eliminar bebida____")
         nombre = input("Ingrese el nombre del bebida: ")
@@ -87,7 +89,7 @@ def main_bebida():
             
             confirmacion = input("¿Está seguro de que desea eliminar esta bebida? (s/n): ")
             if confirmacion.lower() == 's':
-                eliminar_bebida(bebida)  # Método en controlador_bebida para eliminar
+                borrar_bebida(bebida)  # Método en controlador_bebida para eliminar
             else:
                 print("Eliminación cancelada")
         else:

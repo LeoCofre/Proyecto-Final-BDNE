@@ -41,7 +41,7 @@ class Cliente:
     def set_direccion(self,direccion):
         self.__direccion = direccion
     
-    def set_tefono(self,telefono):
+    def set_telefono(self,telefono):
         self.__telefono = telefono
     
     def set_correo(self,correo):

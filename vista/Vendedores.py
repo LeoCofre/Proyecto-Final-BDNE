@@ -1,4 +1,5 @@
-from controlador.ControladorVendedor import ingresar_vendedor,buscar_vendedor,modificar_vendedor,eliminar_vendedor
+from controlador.ControladorVendedor import agregar_vendedor,buscar_vendedor_registrado,actualizar_vendedor,modificar_vendedor,eliminar_vendedor_db
+from modelo.VendedorSQL import Vendedor
 
 def menu_Vendedores():
     while True:
@@ -24,3 +25,85 @@ def menu_Vendedores():
             break
         else:
             print("Opción no válida. Intente de nuevo.")
+
+
+def ingresar_vendedor():
+    nombre = input("Ingrese el nombre del vendedor: ")
+    apellido = input("Ingrese el apellido del vendedor: ")
+    rut = input("Ingrese el RUT del vendedor: ")
+    fecha_nacimiento = input("Ingrese la fecha de nacimiento del vendedor: ")
+    direccion = input("Ingrese la dirección del vendedor: ")
+    telefono = input("Ingrese el teléfono del vendedor: ")
+    correo = input("Ingrese el correo del vendedor: ")
+    vendedor = Vendedor(nombre,apellido,rut,fecha_nacimiento,direccion,telefono,correo)
+    agregar_vendedor(vendedor)
+
+def buscar_vendedor():
+    rut = input("Ingrese el rut del vendedor a buscar: ")
+    rutbuscar = buscar_vendedor_registrado(rut)
+    if rutbuscar:
+        print("El vendedor existe")
+        print(rut)
+    else:
+        print("No se encontro el rut")
+    return rutbuscar
+
+def modificar_vendedor():
+    try:
+        nombre_vendedor=input("Ingrese el nombre del vendedor que desea editar: ")
+        vendedor=buscar_vendedor_registrado(nombre_vendedor)
+        if not vendedor:
+            print("No se encontro el vendedor con ese nombre")
+            return
+        
+        print(f"vendedor encontrado:ID: {vendedor.get_id()},Nombre: {vendedor.get_nombre()},Apellido: {vendedor.get_apellido()},Rut: {vendedor.get_rut(),}"
+              f"Fecha Nacimiento: {vendedor.get_fecha_nacimiento()},Direccion: {vendedor.get_direccion()},Telefono: {vendedor.get_telefono()},Correo: {vendedor.get_correo()}")
+        nuevo_nombre = input("Ingrese el nuevo nombre del vendedor: ")
+        nuevo_apellido = input("Ingrese el nuevo apellido del vendedor: ")
+        nuevo_rut = input("Ingrese el nuevo RUT del vendedor: ")
+        nuevo_fecha_nacimiento = input("Ingrese la nueva fecha de nacimiento del vendedor (YYYY/MM/DD), presione Enter para mantener el actual): ")
+        nueva_direccion = input("Ingrese la nueva dirección del vendedor (presione Enter para mantener la actual):")
+        nuevo_telefono = input("Ingrese el nuevo teléfono del vendedor (presione Enter para mantener el actual:")
+        nuevo_correo = input("Ingrese el nuevo correo del vendedor (presione Enter para mantener el actual:")
+
+        if nuevo_nombre:
+            vendedor.set_nombre(nuevo_nombre)
+        if nuevo_apellido:
+            vendedor.set_apellido(nuevo_apellido)
+        if nuevo_rut:
+            vendedor.set_rut(nuevo_rut)
+        if nuevo_fecha_nacimiento:
+            vendedor.set_fecha_nacimiento(nuevo_fecha_nacimiento)
+        if nueva_direccion:
+            vendedor.set_direccion(nueva_direccion)
+        if nuevo_telefono:
+            vendedor.set_telefono(nuevo_telefono)
+        if nuevo_correo:
+            vendedor.set_correo(nuevo_correo)
+    
+        actualizar_vendedor(vendedor)
+    except ValueError:
+        print("Error al editar el vendedor")
+    except Exception as e:
+        print(f"Error al editar el vendedor: {e}")
+    
+def eliminar_vendedor():
+    rut = input("Ingrese el rut del vendedor a eliminar: ")
+    vendedor = buscar_vendedor_registrado(rut)
+    if vendedor is not None:
+        print("vendedor Encontrado:")
+        print(f"Nombre:{vendedor.get_nombre()}")
+        print(f"Apellido:{vendedor.get_apellido()}")
+        print(f"Rut:{vendedor.get_rut()}")
+        print(f"Fecha Nacimiento:{vendedor.get_fecha_nacimiento()}")
+        print(f"Direccion:{vendedor.get_direccion()}")
+        print(f"Telefono:{vendedor.get_telefono()}")
+        print(f"Correo:{vendedor.get_correo()}")
+
+        confirmacion = input("¿Desea eliminar el vendedor? (s/n): ")
+        if confirmacion.lower() == "s":
+            eliminar_vendedor_db(vendedor)
+        else:
+            print("Eliminacion cancelada")
+    else:
+        print("vendedor no encontrado")

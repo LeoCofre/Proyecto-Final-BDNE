@@ -1,4 +1,5 @@
-from controlador.ControladorCliente import ingresar_cliente, buscar_cliente, modificar_cliente, eliminar_cliente
+from controlador.ControladorCliente import agregar_cliente,buscar_cliente_registrado,eliminar_cliente_db,actualizar_cliente
+from modelo.ClienteSQL import Cliente
 
 def menu_Clientes():
     while True:
@@ -24,3 +25,84 @@ def menu_Clientes():
             break
         else:
             print("Opción no válida. Intente de nuevo.")
+
+def ingresar_cliente():
+    nombre = input("Ingrese el nombre del cliente: ")
+    apellido = input("Ingrese el apellido del cliente: ")
+    rut = input("Ingrese el RUT del cliente: ")
+    fecha_nacimiento = input("Ingrese la fecha de nacimiento del cliente: ")
+    direccion = input("Ingrese la dirección del cliente: ")
+    telefono = input("Ingrese el teléfono del cliente: ")
+    correo = input("Ingrese el correo del cliente: ")
+    cliente = Cliente(nombre,apellido,rut,fecha_nacimiento,direccion,telefono,correo)
+    agregar_cliente(cliente)
+
+def buscar_cliente():
+    rut = input("Ingrese el rut del cliente a buscar: ")
+    rutbuscar = buscar_cliente_registrado(rut)
+    if rutbuscar:
+        print("El cliente existe")
+        print(rut)
+    else:
+        print("No se encontro el rut")
+    return rutbuscar
+
+def modificar_cliente():
+    try:
+        nombre_cliente=input("Ingrese el nombre del cliente que desea editar: ")
+        cliente=buscar_cliente_registrado(nombre_cliente)
+        if not cliente:
+            print("No se encontro el cliente con ese nombre")
+            return
+        
+        print(f"Cliente encontrado:ID: {cliente.get_id()},Nombre: {cliente.get_nombre()},Apellido: {cliente.get_apellido()},Rut: {cliente.get_rut(),}"
+              f"Fecha Nacimiento: {cliente.get_fecha_nacimiento()},Direccion: {cliente.get_direccion()},Telefono: {cliente.get_telefono()},Correo: {cliente.get_correo()}")
+        nuevo_nombre = input("Ingrese el nuevo nombre del cliente: ")
+        nuevo_apellido = input("Ingrese el nuevo apellido del cliente: ")
+        nuevo_rut = input("Ingrese el nuevo RUT del cliente: ")
+        nuevo_fecha_nacimiento = input("Ingrese la nueva fecha de nacimiento del cliente (YYYY/MM/DD), presione Enter para mantener el actual): ")
+        nueva_direccion = input("Ingrese la nueva dirección del cliente (presione Enter para mantener la actual):")
+        nuevo_telefono = input("Ingrese el nuevo teléfono del cliente (presione Enter para mantener el actual:")
+        nuevo_correo = input("Ingrese el nuevo correo del cliente (presione Enter para mantener el actual:")
+
+        if nuevo_nombre:
+            cliente.set_nombre(nuevo_nombre)
+        if nuevo_apellido:
+            cliente.set_apellido(nuevo_apellido)
+        if nuevo_rut:
+            cliente.set_rut(nuevo_rut)
+        if nuevo_fecha_nacimiento:
+            cliente.set_fecha_nacimiento(nuevo_fecha_nacimiento)
+        if nueva_direccion:
+            cliente.set_direccion(nueva_direccion)
+        if nuevo_telefono:
+            cliente.set_telefono(nuevo_telefono)
+        if nuevo_correo:
+            cliente.set_correo(nuevo_correo)
+    
+        actualizar_cliente(cliente)
+    except ValueError:
+        print("Error al editar el cliente")
+    except Exception as e:
+        print(f"Error al editar el cliente: {e}")
+    
+def eliminar_cliente():
+    rut = input("Ingrese el rut del cliente a eliminar: ")
+    cliente = buscar_cliente_registrado(rut)
+    if cliente is not None:
+        print("Cliente Encontrado:")
+        print(f"Nombre:{cliente.get_nombre()}")
+        print(f"Apellido:{cliente.get_apellido()}")
+        print(f"Rut:{cliente.get_rut()}")
+        print(f"Fecha Nacimiento:{cliente.get_fecha_nacimiento()}")
+        print(f"Direccion:{cliente.get_direccion()}")
+        print(f"Telefono:{cliente.get_telefono()}")
+        print(f"Correo:{cliente.get_correo()}")
+
+        confirmacion = input("¿Desea eliminar el cliente? (s/n): ")
+        if confirmacion.lower() == "s":
+            eliminar_cliente_db(cliente)
+        else:
+            print("Eliminacion cancelada")
+    else:
+        print("Cliente no encontrado")

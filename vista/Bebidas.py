@@ -1,5 +1,5 @@
-from modelo.BebidaSQL import BebidaSql
-from controlador.ControladorBebida import agregar_bebida, buscar_bebida_registrada, editar_bebida, borrar_bebida
+from modelo.BebidaSQL import Bebida
+from controlador.ControladorBebida import agregar_bebida_db, buscar_bebida_db, editar_bebida_db, eliminar_bebida_db
 def menu_bebidas():
     print("Menu bebidas")
     print("1.- Ingresar ")
@@ -26,12 +26,12 @@ def main_bebida():
             descripcion = input("Ingrese la descripcion de la bebida: ")
             cantidad = input("Ingrese la cantidad de la bebida: ")
             print("Bebida ingresada con exito")
-            bebida = BebidaSql(nombre, precio, categoria, descripcion, cantidad)
-            agregar_bebida(bebida)
+            bebida = Bebida(nombre, precio, categoria, descripcion, cantidad)
+            agregar_bebida_db(bebida)
 
         def buscar_bebida():
             nombre_bebida = input("Ingrese nombre de la bebida")
-            bebida_a_buscar = buscar_bebida_registrada(nombre_bebida)
+            buscar_bebida = buscar_bebida_db(nombre_bebida)
             if buscar_bebida:
                 print("Bebida encontrada")
                 print(nombre_bebida)
@@ -42,7 +42,7 @@ def main_bebida():
             print("=====Editar Bebida=====")
             try:
                 nombre_bebida = input("Ingrese el  nombre de la Bebida a modificar: ")
-                bebida = buscar_bebida_registrada(nombre_bebida)
+                bebida = buscar_bebida_db(nombre_bebida)
                 if not bebida:
                     print("No se encontró bebida con ese nombre ")
                     return 
@@ -51,10 +51,10 @@ def main_bebida():
                     f"Descripcion: {bebida.get_descripcion()}, Cantidad: {bebida.get_cantidad()} ")        
                 
                 nuevo_nombre = input("Ingrese nuevo nombre: ") 
-                nuevo_precio = input("Ingrese el nuevo precio de la bebida: ")
-                nueva_categoria = input("Ingrese la nueva categoria de la bebida: ")
-                nueva_descripcion = input("Ingrese la nueva descripcion de la bebida: ")
-                nueva_cantidad = input("Ingrese la nueva cantidad de la bebida: ")
+                nuevo_precio = input("Ingrese el nuevo precio de la bebida, presione Enter para mantener el actual: ")
+                nueva_categoria = input("Ingrese la nueva categoria de la bebida, presione Enter para mantener el actual: ")
+                nueva_descripcion = input("Ingrese la nueva descripcion de la bebida, presione Enter para mantener el actual: ")
+                nueva_cantidad = input("Ingrese la nueva cantidad de la bebida, presione Enter para mantener el actual: ")
 
                 if nuevo_nombre:
                     bebida.set_nombre(nuevo_nombre)
@@ -67,6 +67,7 @@ def main_bebida():
                 if nueva_cantidad:
                     bebida.set_cantidad(nueva_cantidad)  
 
+                editar_bebida_db(bebida)
             except ValueError:
                 print("Error: Por favor ingrese valores válidos. ")
             except Exception as e:
@@ -75,22 +76,23 @@ def main_bebida():
 
 
         def eliminar_bebida():
-                print("____Eliminar bebida____")
-        nombre = input("Ingrese el nombre del bebida: ")
-        bebida = buscar_bebida(nombre)  # Método en controlador_bebida
-        if bebida is not None:
-            print("bebida encontrado:")
-            print(f"Nombre: {bebida.get_nombre()}")
-            print(f"Precio: {bebida.get_precio()}")
-            print(f"Categoria: {bebida.get_categoria()}")
-            print(f"Descripción: {bebida.get_descripcion()}")
-            print(f"Cantidad: {bebida.get_cantidad()}")
+            print("____Eliminar bebida____")
+            nombre = input("Ingrese el nombre del bebida: ")
+            bebida = buscar_bebida(nombre)  # Método en controlador_bebida
+            if bebida is not None:
+                print("bebida encontrado:")
+                print(f"Nombre: {bebida.get_nombre()}")
+                print(f"Precio: {bebida.get_precio()}")
+                print(f"Categoria: {bebida.get_categoria()}")
+                print(f"Descripción: {bebida.get_descripcion()}")
+                print(f"Cantidad: {bebida.get_cantidad()}")
 
-            
-            confirmacion = input("¿Está seguro de que desea eliminar esta bebida? (s/n): ")
-            if confirmacion.lower() == 's':
-                borrar_bebida(bebida)  # Método en controlador_bebida para eliminar
+                
+                confirmacion = input("¿Está seguro de que desea eliminar esta bebida? (s/n): ")
+                if confirmacion.lower() == 's':
+                    eliminar_bebida_db(bebida)  # Método en controlador_bebida para eliminar
+                else:
+                    print("Eliminación cancelada")
             else:
-                print("Eliminación cancelada")
-        else:
-            print("bebida no encontrada")
+                print("bebida no encontrada")
+                

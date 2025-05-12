@@ -1,4 +1,4 @@
-from controlador.ControladorCliente import agregar_cliente,buscar_cliente_registrado,eliminar_cliente_db,actualizar_cliente
+from controlador.ControladorCliente import agregar_cliente_db, buscar_cliente_db, eliminar_cliente_db, editar_cliente_db
 from modelo.ClienteSQL import Cliente
 
 def menu_Clientes():
@@ -35,11 +35,11 @@ def ingresar_cliente():
     telefono = input("Ingrese el teléfono del cliente: ")
     correo = input("Ingrese el correo del cliente: ")
     cliente = Cliente(nombre,apellido,rut,fecha_nacimiento,direccion,telefono,correo)
-    agregar_cliente(cliente)
+    agregar_cliente_db(cliente)
 
 def buscar_cliente():
     rut = input("Ingrese el rut del cliente a buscar: ")
-    rutbuscar = buscar_cliente_registrado(rut)
+    rutbuscar = buscar_cliente_db(rut)
     if rutbuscar:
         print("El cliente existe")
         print(rut)
@@ -50,7 +50,7 @@ def buscar_cliente():
 def modificar_cliente():
     try:
         nombre_cliente=input("Ingrese el nombre del cliente que desea editar: ")
-        cliente=buscar_cliente_registrado(nombre_cliente)
+        cliente=buscar_cliente_db(nombre_cliente)
         if not cliente:
             print("No se encontro el cliente con ese nombre")
             return
@@ -80,7 +80,7 @@ def modificar_cliente():
         if nuevo_correo:
             cliente.set_correo(nuevo_correo)
     
-        actualizar_cliente(cliente)
+        editar_cliente_db(cliente)
     except ValueError:
         print("Error al editar el cliente")
     except Exception as e:

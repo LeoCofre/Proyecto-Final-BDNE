@@ -1,4 +1,4 @@
-class bebida:
+class Bebida:
     def __init__(self, nombre, precio, categoria, descripcion, cantidad):
         self.__nombre = nombre
         self.__precio = precio

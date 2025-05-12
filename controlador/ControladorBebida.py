@@ -1,8 +1,8 @@
-def agregar_bebida():
+def agregar_bebida_db():
     pass
-def buscar_bebida_registrada():
+def buscar_bebida_db():
     pass
-def modificar_bebidas():
+def editar_bebida_db():
     pass    
-def eliminar_bebida():
+def eliminar_bebida_db():
     pass

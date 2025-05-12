@@ -1,4 +1,4 @@
-from controlador.ControladorVendedor import agregar_vendedor,buscar_vendedor_registrado,actualizar_vendedor,modificar_vendedor,eliminar_vendedor_db
+from controlador.ControladorVendedor import agregar_vendedor_db, buscar_vendedor_db, editar_vendedor_db, eliminar_vendedor_db
 from modelo.VendedorSQL import Vendedor
 
 def menu_Vendedores():
@@ -18,7 +18,7 @@ def menu_Vendedores():
         elif opcion == "2":
             buscar_vendedor()
         elif opcion == "3":
-            modificar_vendedor()
+            editar_vendedor()
         elif opcion == "4":
             eliminar_vendedor()
         elif opcion == "5":
@@ -36,11 +36,11 @@ def ingresar_vendedor():
     telefono = input("Ingrese el teléfono del vendedor: ")
     correo = input("Ingrese el correo del vendedor: ")
     vendedor = Vendedor(nombre,apellido,rut,fecha_nacimiento,direccion,telefono,correo)
-    agregar_vendedor(vendedor)
+    agregar_vendedor_db(vendedor)
 
 def buscar_vendedor():
     rut = input("Ingrese el rut del vendedor a buscar: ")
-    rutbuscar = buscar_vendedor_registrado(rut)
+    rutbuscar = buscar_vendedor_db(rut)
     if rutbuscar:
         print("El vendedor existe")
         print(rut)
@@ -48,10 +48,10 @@ def buscar_vendedor():
         print("No se encontro el rut")
     return rutbuscar
 
-def modificar_vendedor():
+def editar_vendedor():
     try:
         nombre_vendedor=input("Ingrese el nombre del vendedor que desea editar: ")
-        vendedor=buscar_vendedor_registrado(nombre_vendedor)
+        vendedor=buscar_vendedor_db(nombre_vendedor)
         if not vendedor:
             print("No se encontro el vendedor con ese nombre")
             return
@@ -81,7 +81,7 @@ def modificar_vendedor():
         if nuevo_correo:
             vendedor.set_correo(nuevo_correo)
     
-        actualizar_vendedor(vendedor)
+        editar_vendedor_db(vendedor)
     except ValueError:
         print("Error al editar el vendedor")
     except Exception as e:
@@ -89,7 +89,7 @@ def modificar_vendedor():
     
 def eliminar_vendedor():
     rut = input("Ingrese el rut del vendedor a eliminar: ")
-    vendedor = buscar_vendedor_registrado(rut)
+    vendedor = buscar_vendedor_db(rut)
     if vendedor is not None:
         print("vendedor Encontrado:")
         print(f"Nombre:{vendedor.get_nombre()}")

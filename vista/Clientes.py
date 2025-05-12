@@ -43,6 +43,8 @@ def buscar_cliente():
     if rut_buscar:
         print("El cliente existe")
         print(rut)
+        print(f"Nombres: {rut_buscar.get_nombres()}")
+        print(f"Apellidos: {rut_buscar.get_apellidos()}")
     else:
         print("No se encontro el rut")
     return rut_buscar

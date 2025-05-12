@@ -17,12 +17,34 @@ def agregar_cliente_db(cliente):
         conn.close()
 
 
-def buscar_cliente_db(nombre_cliente):
-    pass
+def buscar_cliente_db(rut):
+    conn=conectar()
+    try:
+        if conn is not None:
+            cursor=conn.cursor()
+            cursor.execute(
+                "SELECT * FROM clientes WHERE rut=%s",
+                (rut,))
+            cliente = cursor.fetchone()
+            if cliente is not None:
+                cliente_encontrado=Cliente(cliente [1],cliente[2],cliente[3],cliente[4],cliente[5],cliente[6],cliente[7])
+                cliente_encontrado.set_id(cliente[0])
+            else:
+                cliente_encontrado=None
+            return cliente_encontrado
+        else:
+            return None
+    except Exception as e:
+        print(f"Error al buscar cliente: {e}")
+    finally:
+        cursor.close()
+        conn.close()
 
 def editar_cliente_db(cliente):
     pass
 
 def eliminar_cliente_db(cliente):
     pass
+
+
 

@@ -39,13 +39,13 @@ def ingresar_cliente():
 
 def buscar_cliente():
     rut = input("Ingrese el rut del cliente a buscar: ")
-    rutbuscar = buscar_cliente_db(rut)
-    if rutbuscar:
+    rut_buscar = buscar_cliente_db(rut)
+    if rut_buscar:
         print("El cliente existe")
         print(rut)
     else:
         print("No se encontro el rut")
-    return rutbuscar
+    return rut_buscar
 
 def modificar_cliente():
     try:

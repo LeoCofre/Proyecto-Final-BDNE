@@ -24,7 +24,6 @@ def mostrar_menu_principal():
 
     
 def iniciar_menu():
-    print("_____Aqui voy___")
     while True:
         opcion = mostrar_menu_principal()
         if opcion == 1:

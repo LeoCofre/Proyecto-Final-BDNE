@@ -1,7 +1,9 @@
 from modelo.Pedido import Pedido
 from controlador.ControladorPedido import agregar_pedido_db, buscar_pedido_db, editar_pedido_db, eliminar_pedido_db
+
+
 def menu_pedidos():
-    print("Menu pedidos")
+    print("=====Menu pedidos=====")
     print("1.- Ingresar Pedido ")
     print("2.- Buscar Pedido")
     print("3.- Modificar Pedido")
@@ -9,7 +11,6 @@ def menu_pedidos():
     print("5.- Volver al Menú Principal")
     print("=========================")
 
-def main_pedido():
     opcion = int(input("===Elija una opción==="))
     while True:
         if opcion == 1:

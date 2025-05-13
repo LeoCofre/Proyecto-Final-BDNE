@@ -52,7 +52,7 @@ def editar_bebida_db(bebida):
         if conn is not None:
             cursor = conn.cursor()
             cursor.execute("UPDATE bebidas SET nombre=%s,precio=%s,categoria=%s,descripcion=%s,cantidad=%s WHERE id=%s",
-                           (bebida.get_nombre(),bebida.get_precio(),bebida.get_descripcion(),bebida.get_cantidad()))
+                           (bebida.get_nombre(),bebida.get_precio(),bebida.get_categoria(),bebida.get_descripcion(),bebida.get_cantidad(),bebida.get_id()))
             conn.commit()
             print("Bebida editada con éxito")
     except Exception as e:

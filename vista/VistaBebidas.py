@@ -12,7 +12,7 @@ def menu_bebidas():
         print("5.- Volver al Menú Principal")
         print("=========================")
 
-        opcion = input("=====Elija una opción====")
+        opcion = input("Ingrese una opción: ")
         if opcion == "1":
             agregar_bebida()
         elif opcion == "2":
@@ -42,6 +42,9 @@ def buscar_bebida():
     if buscar_bebida:
         print("Bebida encontrada")
         print(f"Nombre:{buscar_bebida.get_nombre()}")
+        print(f"Precio:{buscar_bebida.get_precio()}")
+        print(f"Categoria:{buscar_bebida.get_categoria()}")
+        print(f"Cantidad:{buscar_bebida.get_cantidad()}")
     else:
         print("No se encontró Bebida ingresada")    
 

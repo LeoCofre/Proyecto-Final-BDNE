@@ -57,7 +57,7 @@ def modificar_cliente():
             print("No se encontro el cliente con ese rut")
             return
         
-        print(f"Cliente encontrado:ID: {cliente.get_id()},Nombre: {cliente.get_nombres()},Apellido: {cliente.get_apellidos()},Rut: {cliente.get_rut(),}"
+        print(f"Cliente encontrado:ID: {cliente.get_id_cliente()},Nombre: {cliente.get_nombres()},Apellido: {cliente.get_apellidos()},Rut: {cliente.get_rut(),}"
               f"Fecha Nacimiento: {cliente.get_fecha_nacimiento()},Direccion: {cliente.get_direccion()},Telefono: {cliente.get_telefono()},Correo: {cliente.get_correo()}")
         nuevo_nombre = input("Ingrese el nuevo nombre del cliente: ")
         nuevo_apellido = input("Ingrese el nuevo apellido del cliente: ")

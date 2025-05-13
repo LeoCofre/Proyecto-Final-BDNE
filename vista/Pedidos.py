@@ -1,4 +1,5 @@
-
+from modelo.Pedido import Pedido
+from controlador.ControladorPedido import agregar_pedido_db, buscar_pedido_db, editar_pedido_db, eliminar_pedido_db
 
 def menu_pedidos():
     while True:
@@ -27,6 +28,7 @@ def menu_pedidos():
 
             
 def ingresar_pedido():
+    
     pass
 def buscar_pedido():
     pass

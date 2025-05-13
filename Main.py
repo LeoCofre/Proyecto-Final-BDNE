@@ -1,4 +1,4 @@
-from vista.Menu import  iniciar_menu
+from vista.VistaMenu import  iniciar_menu
 
 
 iniciar_menu() 

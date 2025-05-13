@@ -1,4 +1,4 @@
-class Vetnta:
+class Venta:
     def __init__(self, id_venta, fecha , id_pedido, id_cliente, nombre_cliente, total, medio_de_pago):
         self.__id_venta = id_venta
         self.__fecha = fecha

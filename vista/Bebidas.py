@@ -4,15 +4,16 @@ from controlador.ControladorBebida import agregar_bebida_db, buscar_bebida_db, e
 
 def menu_bebidas():
     while True:
-        print("Menu bebidas")
+        print("\n===== Menú Bebidas =====")
         print("1.- Ingresar ")
         print("2.- Buscar")
         print("3.- Modificar")
         print("4.- Eliminar")
+        print("5.- Volver al Menú Principal")
+        print("=========================")
 
+        opcion = input("Ingrese una opción: ")
 
-        opcion = input("=====Elija una opción====")
-    
         if opcion == "1":
             agregar_bebida()
         elif opcion == "2":
@@ -37,11 +38,11 @@ def agregar_bebida():
     agregar_bebida_db(bebida)
 
 def buscar_bebida():
-    nombre_bebida = input("Ingrese nombre de la bebida")
+    nombre_bebida = input("Ingrese nombre de la bebida: ")
     buscar_bebida = buscar_bebida_db(nombre_bebida)
     if buscar_bebida:
         print("Bebida encontrada")
-        print(nombre_bebida)
+        print(f"Nombre:{buscar_bebida.get_nombre()}")
     else:
         print("No se encontró Bebida ingresada")    
 

@@ -5,7 +5,7 @@ class Bebida:
         self.__categoria = categoria
         self.__descripcion = descripcion
         self.__cantidad = cantidad
-        self.__id=0
+        self.__id = 0
 
 #Getters
     def get_nombre(self):
@@ -31,19 +31,19 @@ class Bebida:
     def set_nombre(self, nombre):
         self.__nombre = nombre
 
-    def set__precio(self, precio):
+    def set_precio(self, precio):
         self.__precio = precio
 
-    def set__categoria(self, categoria):
+    def set_categoria(self, categoria):
         self.__categoria = categoria 
 
-    def set__descripcion(self, descripcion):
+    def set_descripcion(self, descripcion):
         self.__descripcion = descripcion
 
-    def set__cantidad(self, cantidad):
+    def set_cantidad(self, cantidad):
         self.__cantidad = cantidad
 
-    def set__id(self,id):
+    def set_id(self,id):
         self.__id=id
 
 #ToString

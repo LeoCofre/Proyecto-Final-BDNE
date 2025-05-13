@@ -1,6 +1,7 @@
 import pymongo
 from pymongo.errors import ConnectionFailure
-
+from pymongo import MongoClient
+ 
 def conectar_mongodb():
     try:
         # Parámetros de conexión
@@ -19,3 +20,4 @@ def conectar_mongodb():
     except ConnectionFailure as e:
         print(f"No se pudo conectar a la base de datos: {e}")
         return None
+

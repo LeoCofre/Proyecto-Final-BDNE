@@ -1,3 +1,5 @@
+from modelo.ConexionNOSQL import conectar_mongodb
+
 def agregar_pedido_db():
     pass
 

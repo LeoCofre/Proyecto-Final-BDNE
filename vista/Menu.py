@@ -2,6 +2,7 @@ from vista.Bebidas import menu_bebidas
 from vista.Clientes import menu_clientes
 from vista.Pedidos import menu_pedidos
 from vista.Vendedores import menu_vendedores
+from vista.Ventas import menu_ventas
 import os
 
 
@@ -16,6 +17,7 @@ def mostrar_menu_principal():
     print("2.- Menu Bebidas")
     print("3.- Menu Vendedor")
     print("4.- Menu Pedido")
+    print("5.- Menu Ventas ")
     print("===========================")
     opcion = int(input("Ingrese una opcion: "))
     return opcion
@@ -33,6 +35,8 @@ def iniciar_menu():
             menu_vendedores()
         elif opcion == 4:
             menu_pedidos()
+        elif opcion == 5:
+            menu_ventas()    
         else:
             print("Opción no válida, intente de nuevo.")
  

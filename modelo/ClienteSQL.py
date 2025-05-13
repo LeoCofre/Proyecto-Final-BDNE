@@ -7,7 +7,7 @@ class Cliente:
         self.__direccion = direccion
         self.__telefono = telefono
         self.__correo = correo
-        self.__id = 0
+        self.__id_cliente = 0
     
     def get_nombres(self):
         return self.__nombres
@@ -23,8 +23,8 @@ class Cliente:
         return self.__telefono
     def get_correo(self):
         return self.__correo
-    def get_id(self):
-        return self.__id
+    def get_id_cliente(self):
+        return self.__id_cliente
     
     def set_nombres(self,nombres):
         self.__nombres = nombres
@@ -47,8 +47,8 @@ class Cliente:
     def set_correo(self,correo):
         self.__correo = correo
     
-    def set_id(self,id):
-        self.__id = id
+    def set_id(self,id_cliente):
+        self.__id_cliente = id_cliente
     
     def __str__(self):
         return f"Nombres: {self.__nombres}\nApellidos: {self.__apellidos}\nRut: {self.__rut}\nFecha de Nacimiento: {self.__fecha_nacimiento}\nDireccion: {self.__direccion}\nTelefono: {self.__telefono}\nCorreo: {self.__correo}"

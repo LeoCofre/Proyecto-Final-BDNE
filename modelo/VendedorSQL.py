@@ -7,7 +7,7 @@ class Vendedor:
         self.__direccion = direccion
         self.__telefono = telefono
         self.__correo = correo
-        self.__id = 0
+        self.__id_vendedor = 0
     
     def get_nombres(self):
         return self.__nombres
@@ -23,8 +23,8 @@ class Vendedor:
         return self.__telefono
     def get_correo(self):
         return self.__correo
-    def get_id(self):
-        return self.__id
+    def get_id_vendedor(self):
+        return self.__id_vendedor
     
     def set_nombres(self,nombres):
         self.__nombres = nombres
@@ -47,8 +47,8 @@ class Vendedor:
     def set_correo(self,correo):
         self.__correo = correo
     
-    def set_id(self,id):
-        self.__id = id
+    def set_id_vendedor(self,id_vendedor):
+        self.__id_vendedor = id_vendedor
     
     def __str__(self):
         return f"Nombres: {self.__nombres}\nApellidos: {self.__apellidos}\nRut: {self.__rut}\nFecha de Nacimiento: {self.__fecha_nacimiento}\nDireccion: {self.__direccion}\nTelefono: {self.__telefono}\nCorreo: {self.__correo}"

@@ -56,7 +56,7 @@ def editar_vendedor():
             print("No se encontro el vendedor con ese nombre")
             return
         
-        print(f"vendedor encontrado:ID: {vendedor.get_id()},Nombre: {vendedor.get_nombre()},Apellido: {vendedor.get_apellido()},Rut: {vendedor.get_rut(),}"
+        print(f"vendedor encontrado:ID: {vendedor.get_id_vendedor()},Nombre: {vendedor.get_nombres()},Apellido: {vendedor.get_apellidos()},Rut: {vendedor.get_rut(),}"
               f"Fecha Nacimiento: {vendedor.get_fecha_nacimiento()},Direccion: {vendedor.get_direccion()},Telefono: {vendedor.get_telefono()},Correo: {vendedor.get_correo()}")
         nuevo_nombre = input("Ingrese el nuevo nombre del vendedor: ")
         nuevo_apellido = input("Ingrese el nuevo apellido del vendedor: ")
@@ -67,9 +67,9 @@ def editar_vendedor():
         nuevo_correo = input("Ingrese el nuevo correo del vendedor (presione Enter para mantener el actual:")
 
         if nuevo_nombre:
-            vendedor.set_nombre(nuevo_nombre)
+            vendedor.set_nombres(nuevo_nombre)
         if nuevo_apellido:
-            vendedor.set_apellido(nuevo_apellido)
+            vendedor.set_apellidos(nuevo_apellido)
         if nuevo_rut:
             vendedor.set_rut(nuevo_rut)
         if nuevo_fecha_nacimiento:
@@ -92,8 +92,8 @@ def eliminar_vendedor():
     vendedor = buscar_vendedor_db(rut)
     if vendedor is not None:
         print("vendedor Encontrado:")
-        print(f"Nombre:{vendedor.get_nombre()}")
-        print(f"Apellido:{vendedor.get_apellido()}")
+        print(f"Nombre:{vendedor.get_nombres()}")
+        print(f"Apellido:{vendedor.get_apellidos()}")
         print(f"Rut:{vendedor.get_rut()}")
         print(f"Fecha Nacimiento:{vendedor.get_fecha_nacimiento()}")
         print(f"Direccion:{vendedor.get_direccion()}")

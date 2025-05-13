@@ -46,7 +46,7 @@ def editar_cliente_db(cliente):
         if conn is not None:
             cursor = conn.cursor()
             cursor.execute("UPDATE clientes SET nombres=%s, apellidos=%s,rut=%s, fecha_nacimiento=%s, direccion=%s, telefono=%s, correo=%s WHERE id=%s",
-                           (cliente.get_nombres(), cliente.get_apellidos(), cliente.get_rut(), cliente.get_fecha_nacimiento(),cliente.get_direccion(),cliente.get_telefono(),cliente.get_correo(),cliente.get_id()))
+                           (cliente.get_nombres(), cliente.get_apellidos(), cliente.get_rut(), cliente.get_fecha_nacimiento(),cliente.get_direccion(),cliente.get_telefono(),cliente.get_correo(),cliente.get_id_cliente()))
             conn.commit()
             print("Cliente editado con exito")
     except Exception as e:
@@ -56,7 +56,18 @@ def editar_cliente_db(cliente):
         conn.close()
 
 def eliminar_cliente_db(cliente):
-    pass
-
+        conn=conectar()
+        try:
+            if conn is not None:
+                cursor=conn.cursor()
+                cursor.execute("DELETE FROM clientes WHERE id_cliente=%s",
+                            (cliente.get_id_cliente(),))
+                conn.commit()
+                print("Cliente eliminado")
+        except Exception as e:
+            print(f"No se eliminaron registros {e}")
+        finally:
+            cursor.close()
+            conn.close()
 
 

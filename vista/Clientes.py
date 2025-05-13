@@ -93,8 +93,8 @@ def eliminar_cliente():
     cliente = buscar_cliente_db(rut)
     if cliente is not None:
         print("Cliente Encontrado:")
-        print(f"Nombre:{cliente.get_nombre()}")
-        print(f"Apellido:{cliente.get_apellido()}")
+        print(f"Nombre:{cliente.get_nombres()}")
+        print(f"Apellido:{cliente.get_apellidos()}")
         print(f"Rut:{cliente.get_rut()}")
         print(f"Fecha Nacimiento:{cliente.get_fecha_nacimiento()}")
         print(f"Direccion:{cliente.get_direccion()}")

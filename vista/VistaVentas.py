@@ -36,7 +36,22 @@ def ingresar_venta():
     agregar_venta_db(venta)
 
 def buscar_venta():
-    pass
+    id_pedido = input("Ingrese el ID del pedido a buscar: ")
+    buscar_venta = buscar_venta_db(id_pedido)
+    
+    if buscar_venta:
+        print("Venta encontrada")
+        print(f"Fecha: {buscar_venta.get_fecha()}")
+        print(f"ID Pedido: {buscar_venta.get_id_pedido()}")
+        print(f"ID Cliente: {buscar_venta.get_id_cliente()}")
+        print(f"Nombre Cliente: {buscar_venta.get_nombre_cliente()}")
+        print(f"Total: {buscar_venta.get_total()}")
+        print(f"Medio de Pago: {buscar_venta.get_medio_de_pago()}")
+    else:
+        print("No se encontró el pedido.")
+    
+    return buscar_venta
+
 def editar_venta():
     pass
 def eliminar_venta():

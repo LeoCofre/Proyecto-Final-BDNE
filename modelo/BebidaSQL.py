@@ -43,7 +43,7 @@ class Bebida:
     def set_cantidad(self, cantidad):
         self.__cantidad = cantidad
 
-    def set_id(self,id):
+    def set_id(self, id):
         self.__id=id
 
 #ToString

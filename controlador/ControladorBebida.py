@@ -66,8 +66,8 @@ def eliminar_bebida_db(bebida):
         try:
             if conn is not None:
                 cursor=conn.cursor()
-                cursor.execute("DELETE FROM bebidas WHERE id_bebida=%s",
-                            (bebida.get_id_bebida(),))
+                cursor.execute("DELETE FROM bebidas WHERE id=%s",
+                            (bebida.get_id(),))
                 conn.commit()
                 print("Bebida eliminada")
         except Exception as e:

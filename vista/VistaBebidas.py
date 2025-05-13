@@ -88,7 +88,7 @@ def modificar_bebida():
 def eliminar_bebida():
     print("____Eliminar bebida____")
     nombre = input("Ingrese el nombre del bebida: ")
-    bebida = buscar_bebida(nombre)  # Método en controlador_bebida
+    bebida = buscar_bebida_db(nombre)  # Método en controlador_bebida
     if bebida is not None:
         print("bebida encontrado:")
         print(f"Nombre: {bebida.get_nombre()}")

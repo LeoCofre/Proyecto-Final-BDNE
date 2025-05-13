@@ -43,17 +43,19 @@ def buscar_vendedor():
     rutbuscar = buscar_vendedor_db(rut)
     if rutbuscar:
         print("El vendedor existe")
-        print(rut)
+        print(f"Rut: {rutbuscar.get_rut()}")
+        print(f"Nombres: {rutbuscar.get_nombres()}")
+        print(f"Apellidos: {rutbuscar.get_apellidos()}")        
     else:
         print("No se encontro el rut")
     return rutbuscar
 
 def editar_vendedor():
     try:
-        nombre_vendedor=input("Ingrese el nombre del vendedor que desea editar: ")
+        nombre_vendedor=input("Ingrese el rut del vendedor que desea editar: ")
         vendedor=buscar_vendedor_db(nombre_vendedor)
         if not vendedor:
-            print("No se encontro el vendedor con ese nombre")
+            print("No se encontro el vendedor con ese rut")
             return
         
         print(f"vendedor encontrado:ID: {vendedor.get_id_vendedor()},Nombre: {vendedor.get_nombres()},Apellido: {vendedor.get_apellidos()},Rut: {vendedor.get_rut(),}"

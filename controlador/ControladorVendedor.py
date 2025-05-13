@@ -45,7 +45,7 @@ def editar_vendedor_db(vendedor):
     try:
         if conn is not None:
             cursor = conn.cursor()
-            cursor.execute("UPDATE vendedores SET nombres=%s, apellidos=%s,rut=%s, fecha_nacimiento=%s, direccion=%s, telefono=%s, correo=%s WHERE id=%s",
+            cursor.execute("UPDATE vendedores SET nombres=%s, apellidos=%s,rut=%s, fecha_nacimiento=%s, direccion=%s, telefono=%s, correo=%s WHERE id_vendedor=%s",
                            (vendedor.get_nombres(), vendedor.get_apellidos(), vendedor.get_rut(), vendedor.get_fecha_nacimiento(),vendedor.get_direccion(),vendedor.get_telefono(),vendedor.get_correo(),vendedor.get_id_vendedor()))
             conn.commit()
             print("vendedor editado con exito")

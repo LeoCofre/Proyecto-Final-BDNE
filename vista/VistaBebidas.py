@@ -12,8 +12,7 @@ def menu_bebidas():
         print("5.- Volver al Menú Principal")
         print("=========================")
 
-        opcion = input("Ingrese una opción: ")
-
+        opcion = input("=====Elija una opción====")
         if opcion == "1":
             agregar_bebida()
         elif opcion == "2":

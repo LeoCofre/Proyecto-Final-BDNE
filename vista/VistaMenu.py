@@ -1,8 +1,8 @@
-from vista.Bebidas import menu_bebidas
-from vista.Clientes import menu_clientes
-from vista.Pedidos import menu_pedidos
-from vista.Vendedores import menu_vendedores
-from vista.Ventas import menu_ventas
+from vista.VistaBebidas import menu_bebidas
+from vista.VistaClientes import menu_clientes
+from vista.VistaPedidos import menu_pedidos
+from vista.VistaVendedores import menu_vendedores
+from vista.VistaVentas import menu_ventas
 import os
 
 

@@ -66,6 +66,7 @@ def mostrar_bebidas():
             print(f"Categoría: {bebida[3]}")
             print(f"Descripción: {bebida[4]}")
             print(f"Cantidad disponible: {bebida[5]}")
+            print("==================")
     else:
         print(bebidas)  # Mensaje si no hay bebidas registradas
 

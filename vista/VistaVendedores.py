@@ -65,6 +65,7 @@ def mostrar_vendedores():
             print(f"RUT: {vendedor[2]}")
             print(f"Fecha d Nacimiento: {vendedor[3]}")
             print(f"Teléfono {vendedor[4]}")
+            print("==================")
     else:
         print(vendedores)  # Mensaje si no hay vendedores registrados
 

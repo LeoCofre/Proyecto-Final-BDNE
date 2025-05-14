@@ -90,10 +90,11 @@ def mostrar_pedidos():
             print(f"Estado: {pedido['estado']}")
             print(f"Bebida: {pedido['detalles']['nombre_bebida']}")
             print(f"Cantidad: {pedido['detalles']['cantidad']} | Precio: ${pedido['detalles']['precio_unitario']}")
+            print("==================")
     else:
         print(pedidos)  # Mensaje si no hay pedidos
 
-    return
+    menu_pedidos()
 
 
 def modificar_pedido():

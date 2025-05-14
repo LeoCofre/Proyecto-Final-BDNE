@@ -64,6 +64,7 @@ def mostrar_clientes():
             print(f"RUT: {cliente[2]}")
             print(f"Fecha de Nacimiento: {cliente[3]}")
             print(f"Teléfono: {cliente[4]}")
+            print("==================")
     else:
         print(clientes)  # Mensaje si no hay clientes registrados
 

@@ -11,7 +11,7 @@ def menu_pedidos():
     print("6.- Volver al Menú Principal")
     print("=========================")
 
-    opcion = int(input("===Elija una opción==="))
+    opcion = int(input("Ingrese una opción: "))
     while True:
         if opcion == 1:
             ingresar_pedido()

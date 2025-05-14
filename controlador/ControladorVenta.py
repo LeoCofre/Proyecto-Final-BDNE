@@ -29,7 +29,7 @@ def buscar_venta_db(id_venta):
         print(" No se pudo conectar a la base de datos.")
         return None
 def listar_ventas_db():
-    """Obtiene la lista de todas las ventas en MongoDB."""
+    #Obtiene la lista de todas las ventas en MongoDB.
     db = conectar_mongodb()
     if db is not None:
         try:

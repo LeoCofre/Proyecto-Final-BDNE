@@ -20,7 +20,7 @@ def buscar_pedido_db(id_pedido):
     if db is not None:
         try:
             coleccion = db["pedidos"]
-            pedido = coleccion.find_one({"id_pedido": id_pedido})  # Ahora buscamos por `id_pedido`
+            pedido = coleccion.find_one({"id_pedido": id_pedido})  # Buscamos el pedido por id_pedido
             return pedido if pedido else None  # Devuelve None si no encuentra el pedido
         except Exception as e:
             print(f" Error al buscar pedido: {e}")
@@ -30,7 +30,7 @@ def buscar_pedido_db(id_pedido):
         return None
 
 def listar_pedidos_db():
-    """Obtiene la lista de todos los pedidos en MongoDB."""
+    #Obtiene la lista de todos los pedidos en MongoDB.
     db = conectar_mongodb()
     if db is not None:
         try:

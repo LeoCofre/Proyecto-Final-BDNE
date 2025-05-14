@@ -16,7 +16,7 @@ def conectar():
             password=".Inacap2024."
         )
         if conn.is_connected():
-            print(" Conexión exitosa a bd_botilleria")
+            print("Conexión exitosa a bd_botilleria")
             return conn
     except Error as e:
         print(f" No se pudo conectar a la base de datos: {e}")

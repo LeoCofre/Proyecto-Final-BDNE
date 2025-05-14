@@ -40,6 +40,26 @@ def buscar_vendedor_db(rut):
         cursor.close()
         conn.close()
 
+def listar_vendedores_db():
+    #Obtiene la lista de todos los vendedores en la base de datos SQL.
+    conn = conectar()
+    try:
+        if conn is not None:
+            cursor = conn.cursor()
+            cursor.execute("SELECT id_vendedor, nombres, rut, fecha_nacimiento, telefono FROM vendedores")  # Ajustamos la consulta
+            vendedores = cursor.fetchall()
+
+            return vendedores if vendedores else "No hay vendedores registrados."  # Devolvemos directamente las tuplas
+        else:
+            return "No se pudo conectar a la base de datos."
+    except Exception as e:
+        print(f"Error al listar vendedores: {e}")
+        return None
+    finally:
+        cursor.close()
+        conn.close()
+
+
 def editar_vendedor_db(vendedor):
     conn = conectar()
     try:

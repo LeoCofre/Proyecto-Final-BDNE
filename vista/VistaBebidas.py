@@ -1,5 +1,5 @@
 from modelo.BebidaSQL import Bebida
-from controlador.ControladorBebida import agregar_bebida_db, buscar_bebida_db, editar_bebida_db, eliminar_bebida_db
+from controlador.ControladorBebida import agregar_bebida_db, buscar_bebida_db, editar_bebida_db, eliminar_bebida_db, listar_bebidas_db
 
 
 def menu_bebidas():
@@ -7,9 +7,10 @@ def menu_bebidas():
         print("\n===== Menú Bebidas =====")
         print("1.- Ingresar ")
         print("2.- Buscar")
-        print("3.- Modificar")
-        print("4.- Eliminar")
-        print("5.- Volver al Menú Principal")
+        print("3.- Mostrar Bebidas")
+        print("4.- Modificar")
+        print("5.- Eliminar")
+        print("6.- Volver al Menú Principal")
         print("=========================")
 
         opcion = input("Ingrese una opción: ")
@@ -18,10 +19,12 @@ def menu_bebidas():
         elif opcion == "2":
             buscar_bebida()
         elif opcion == "3":
-            modificar_bebida()
+            mostrar_bebidas()
         elif opcion == "4":
-            eliminar_bebida()  
+            modificar_bebida()
         elif opcion == "5":
+            eliminar_bebida()  
+        elif opcion == "6":
             break
         else:
             print("Opción no válida. Intente de nuevo.")         
@@ -47,6 +50,27 @@ def buscar_bebida():
         print(f"Cantidad:{buscar_bebida.get_cantidad()}")
     else:
         print("No se encontró Bebida ingresada")    
+ 
+
+ 
+
+def mostrar_bebidas():
+    print("\n--- Listado de Bebidas ---")
+    bebidas = listar_bebidas_db()
+
+    if isinstance(bebidas, list):
+        for bebida in bebidas:
+            print(f"\nID Bebida: {bebida[0]}")
+            print(f"Nombre: {bebida[1]}")
+            print(f"Precio: ${bebida[2]}")
+            print(f"Categoría: {bebida[3]}")
+            print(f"Descripción: {bebida[4]}")
+            print(f"Cantidad disponible: {bebida[5]}")
+    else:
+        print(bebidas)  # Mensaje si no hay bebidas registradas
+
+    menu_bebidas()
+
 
 def modificar_bebida():
     print("=====Editar Bebida=====")

@@ -1,4 +1,4 @@
-from controlador.ControladorCliente import agregar_cliente_db, buscar_cliente_db, eliminar_cliente_db, editar_cliente_db
+from controlador.ControladorCliente import agregar_cliente_db, buscar_cliente_db, eliminar_cliente_db, editar_cliente_db, listar_clientes_db
 from modelo.ClienteSQL import Cliente
 
 def menu_clientes():
@@ -6,8 +6,9 @@ def menu_clientes():
         print("\n===== Menú Clientes =====")
         print("1.- Ingresar")
         print("2.- Buscar")
-        print("3.- Modificar")
-        print("4.- Eliminar")
+        print("3.- Mostrar Clientes")
+        print("4.- Modificar")
+        print("5.- Eliminar")
         print("5.- Volver al Menú Principal")
         print("=========================")
         
@@ -18,10 +19,12 @@ def menu_clientes():
         elif opcion == "2":
             buscar_cliente()
         elif opcion == "3":
-            modificar_cliente()
+            mostrar_clientes()
         elif opcion == "4":
-            eliminar_cliente()
+            modificar_cliente()
         elif opcion == "5":
+            eliminar_cliente()
+        elif opcion == "6":
             break
         else:
             print("Opción no válida. Intente de nuevo.")
@@ -48,6 +51,23 @@ def buscar_cliente():
     else:
         print("No se encontro el rut")
     return rut_buscar
+ 
+
+def mostrar_clientes():
+    print("\n--- Listado de Clientes ---")
+    clientes = listar_clientes_db()
+
+    if isinstance(clientes, list):
+        for cliente in clientes:
+            print(f"\ID Cliente: {cliente[0]}")
+            print(f"Nombre: {cliente[1]}")
+            print(f"RUT: {cliente[2]}")
+            print(f"Fecha de Nacimiento: {cliente[3]}")
+            print(f"Teléfono: {cliente[4]}")
+    else:
+        print(clientes)  # Mensaje si no hay clientes registrados
+
+    menu_clientes()
 
 def modificar_cliente():
     try:

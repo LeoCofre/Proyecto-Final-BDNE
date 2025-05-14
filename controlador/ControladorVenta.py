@@ -28,6 +28,20 @@ def buscar_venta_db(id_venta):
     else:
         print(" No se pudo conectar a la base de datos.")
         return None
+def listar_ventas_db():
+    """Obtiene la lista de todas las ventas en MongoDB."""
+    db = conectar_mongodb()
+    if db is not None:
+        try:
+            coleccion = db["ventas"]
+            ventas = list(coleccion.find({}, {"_id": 0}))  # Excluimos el ID de MongoDB
+            return ventas if ventas else " No hay ventas registradas."
+        except Exception as e:
+            print(f" Error al listar ventas: {e}")
+            return None
+    else:
+        print(" No se pudo conectar a la base de datos.")
+        return None
 
 def editar_venta_db(id_venta, nuevos_datos):
     #Edita una venta en MongoDB usando el ID manual.

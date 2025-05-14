@@ -1,13 +1,14 @@
 from modelo.Venta import Venta
-from controlador.ControladorVenta import agregar_venta_db, buscar_venta_db, editar_venta_db, eliminar_venta_db
+from controlador.ControladorVenta import agregar_venta_db, buscar_venta_db, editar_venta_db, eliminar_venta_db, listar_ventas_db
 
 def menu_ventas():
     print("===== Menú Ventas =====")
     print("1.- Registrar Venta")
     print("2.- Buscar Venta")
-    print("3.- Modificar Venta")
-    print("4.- Eliminar Venta")
-    print("5.- Volver al Menú Principal")
+    print("3.- Mostrar Ventas")
+    print("4.- Modificar Venta")
+    print("5.- Eliminar Venta")
+    print("6.- Volver al Menú Principal")
     print("=========================")
 
     opcion = int(input("=== Elija una opción === : "))
@@ -17,10 +18,12 @@ def menu_ventas():
         elif opcion == 2:
             buscar_venta()
         elif opcion == 3:
-            modificar_venta()
+            mostrar_ventas()
         elif opcion == 4:
-            eliminar_venta()       
+            modificar_venta()
         elif opcion == 5:
+            eliminar_venta()       
+        elif opcion == 6:
             break
         else:
             print(" Opción no válida. Intente de nuevo.")
@@ -75,6 +78,26 @@ def buscar_venta():
 
     menu_ventas()
 
+ 
+
+def mostrar_ventas():
+    print("\n--- Listado de Ventas ---")
+    ventas = listar_ventas_db()
+
+    if isinstance(ventas, list):
+        for venta in ventas:
+            print(f"\n ID Venta: {venta['id_venta']}")
+            print(f"Fecha: {venta['fecha']}")
+            print(f"Cliente: {venta['cliente']['nombre_cliente']}")
+            print(f"Total: ${venta['total']}")
+
+            print("\n Productos:")
+            for producto in venta["productos"]:
+                print(f"➡ {producto['nombre_producto']} | Cantidad: {producto['cantidad']} | Precio: ${producto['precio_unitario']}")
+    else:
+        print(ventas)  # Mensaje si no hay ventas
+
+    menu_ventas()
 
 def modificar_venta():
     try:

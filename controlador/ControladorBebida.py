@@ -42,6 +42,25 @@ def buscar_bebida_db(nombre_bebida):
     finally:
         cursor.close()  
         conn.close()
+def listar_bebidas_db():
+    """Obtiene la lista de todas las bebidas en la base de datos SQL."""
+    conn = conectar()
+    try:
+        if conn is not None:
+            cursor = conn.cursor()
+            cursor.execute("SELECT id, nombre, precio, categoria, descripcion, cantidad FROM bebidas")
+            bebidas = cursor.fetchall()
+
+            return bebidas if bebidas else "❌ No hay bebidas registradas."  # Devolvemos directamente las tuplas
+        else:
+            return "❌ No se pudo conectar a la base de datos."
+    except Exception as e:
+        print(f"❌ Error al listar bebidas: {e}")
+        return None
+    finally:
+        cursor.close()
+        conn.close()
+
 
 def editar_bebida_db(bebida):
     conn = conectar()

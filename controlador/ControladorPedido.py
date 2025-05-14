@@ -15,7 +15,7 @@ def agregar_pedido_db(pedido):
         print(" No se pudo conectar a la base de datos.")
 
 def buscar_pedido_db(id_pedido):
-    """Busca un pedido en MongoDB por su ID manual."""
+    #Busca un pedido en MongoDB por su ID manual.
     db = conectar_mongodb()
     if db is not None:
         try:
@@ -29,9 +29,23 @@ def buscar_pedido_db(id_pedido):
         print(" No se pudo conectar a la base de datos.")
         return None
 
+def listar_pedidos_db():
+    """Obtiene la lista de todos los pedidos en MongoDB."""
+    db = conectar_mongodb()
+    if db is not None:
+        try:
+            coleccion = db["pedidos"]
+            pedidos = list(coleccion.find({}, {"_id": 0}))  # Excluimos el ID de MongoDB
+            return pedidos if pedidos else " No hay pedidos registrados."
+        except Exception as e:
+            print(f" Error al listar pedidos: {e}")
+            return None
+    else:
+        print(" No se pudo conectar a la base de datos.")
+        return None
 
 def editar_pedido_db(id_pedido, nuevos_datos):
-    """Edita un pedido en MongoDB usando el ID manual."""
+    #Edita un pedido en MongoDB usando el ID manual.
     db = conectar_mongodb()
     if db is not None:
         try:
@@ -46,7 +60,7 @@ def editar_pedido_db(id_pedido, nuevos_datos):
         return None
 
 def eliminar_pedido_db(id_pedido):
-    """Elimina un pedido de la base de datos MongoDB por su ID."""
+    #Elimina un pedido de la base de datos MongoDB por su ID.
     db = conectar_mongodb()
     if db is not None:
         try:

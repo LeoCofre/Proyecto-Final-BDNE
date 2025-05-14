@@ -1,13 +1,14 @@
 from modelo.Pedido import Pedido
-from controlador.ControladorPedido import agregar_pedido_db, buscar_pedido_db, editar_pedido_db, eliminar_pedido_db
+from controlador.ControladorPedido import agregar_pedido_db, buscar_pedido_db, editar_pedido_db, eliminar_pedido_db,listar_pedidos_db
 
 def menu_pedidos():
     print("=====Menu pedidos=====")
     print("1.- Ingresar Pedido ")
     print("2.- Buscar Pedido")
-    print("3.- Modificar Pedido")
-    print("4.- Eliminar Pedido")
-    print("5.- Volver al Menú Principal")
+    print("3.- Mostrar Pedidos ")
+    print("4.- Modificar Pedido")
+    print("5.- Eliminar Pedido")
+    print("6.- Volver al Menú Principal")
     print("=========================")
 
     opcion = int(input("===Elija una opción==="))
@@ -17,10 +18,12 @@ def menu_pedidos():
         elif opcion == 2:
             buscar_pedido()
         elif opcion == 3:
-            modificar_pedido()
+            mostrar_pedidos()
         elif opcion == 4:
-            eliminar_pedido()       
+            modificar_pedido()
         elif opcion == 5:
+            eliminar_pedido()       
+        elif opcion == 6:
             break
         else:
             print("Opción no válida. Intente de nuevo.")
@@ -71,6 +74,24 @@ def buscar_pedido():
         print(f"Total: {pedido['detalles']['cantidad'] * pedido['detalles']['precio_unitario']}")
     else:
         print(" No se encontró el pedido en la base de datos.")
+
+    menu_pedidos()
+
+
+def mostrar_pedidos():
+    print("\n--- Listado de Pedidos ---")
+    pedidos = listar_pedidos_db()
+
+    if isinstance(pedidos, list):
+        for pedido in pedidos:
+            print(f"\n ID Pedido: {pedido['id_pedido']}")
+            print(f"Fecha: {pedido['fecha']}")
+            print(f"Cliente: {pedido['cliente']['nombre_cliente']}")
+            print(f"Estado: {pedido['estado']}")
+            print(f"Bebida: {pedido['detalles']['nombre_bebida']}")
+            print(f"Cantidad: {pedido['detalles']['cantidad']} | Precio: ${pedido['detalles']['precio_unitario']}")
+    else:
+        print(pedidos)  # Mensaje si no hay pedidos
 
     menu_pedidos()
 

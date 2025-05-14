@@ -1,4 +1,4 @@
-from controlador.ControladorVendedor import agregar_vendedor_db, buscar_vendedor_db, editar_vendedor_db, eliminar_vendedor_db
+from controlador.ControladorVendedor import agregar_vendedor_db, buscar_vendedor_db, editar_vendedor_db, eliminar_vendedor_db, listar_vendedores_db
 from modelo.VendedorSQL import Vendedor
 
 def menu_vendedores():
@@ -6,9 +6,10 @@ def menu_vendedores():
         print("\n===== Menú Vendedores =====")
         print("1.- Ingresar")
         print("2.- Buscar")
-        print("3.- Modificar")
-        print("4.- Eliminar")
-        print("5.- Volver al Menú Principal")
+        print("3.- Mostrar Vendedores")
+        print("4.- Modificar")
+        print("5.- Eliminar")
+        print("6.- Volver al Menú Principal")
         print("=========================")
         
         opcion = input("Ingrese una opción: ")
@@ -18,10 +19,12 @@ def menu_vendedores():
         elif opcion == "2":
             buscar_vendedor()
         elif opcion == "3":
-            editar_vendedor()
+            mostrar_vendedores()
         elif opcion == "4":
-            eliminar_vendedor()
+            editar_vendedor()
         elif opcion == "5":
+            eliminar_vendedor()
+        elif opcion == "6":
             break
         else:
             print("Opción no válida. Intente de nuevo.")
@@ -49,6 +52,24 @@ def buscar_vendedor():
     else:
         print("No se encontro el rut")
     return rutbuscar
+ 
+
+def mostrar_vendedores():
+    print("\n--- Listado de Vendedores ---")
+    vendedores = listar_vendedores_db()
+
+    if isinstance(vendedores, list):
+        for vendedor in vendedores:
+            print(f"\nID Vendedor: {vendedor[0]}")
+            print(f"Nombre: {vendedor[1]}")
+            print(f"RUT: {vendedor[2]}")
+            print(f"Fecha d Nacimiento: {vendedor[3]}")
+            print(f"Teléfono {vendedor[4]}")
+    else:
+        print(vendedores)  # Mensaje si no hay vendedores registrados
+
+    menu_vendedores()
+
 
 def editar_vendedor():
     try:

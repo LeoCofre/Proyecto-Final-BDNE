@@ -40,6 +40,26 @@ def buscar_cliente_db(rut):
     finally:
         cursor.close()
         conn.close()
+def listar_clientes_db():
+    #Obtiene la lista de todos los clientes en la base de datos SQL.
+    conn = conectar()
+    try:
+        if conn is not None:
+            cursor = conn.cursor()
+            cursor.execute("SELECT id_cliente, nombres, rut, fecha_nacimiento, telefono FROM clientes")  # Ajustamos la consulta
+            clientes = cursor.fetchall()
+
+            return clientes if clientes else "No hay clientes registrados."  # Devolvemos directamente las tuplas
+        else:
+            return "No se pudo conectar a la base de datos."
+    except Exception as e:
+        print(f"Error al listar clientes: {e}")
+        return None
+    finally:
+        cursor.close()
+        conn.close()
+
+
 
 def editar_cliente_db(cliente):
     conn = conectar()

@@ -2,7 +2,7 @@ from modelo.ConexionNOSQL import conectar_mongodb
 from modelo.Pedido import Pedido
 
 def agregar_pedido_db(pedido):
-    """Agrega un pedido a la base de datos MongoDB."""
+    #Agrega un pedido a la base de datos MongoDB.
     db = conectar_mongodb()
     if db is not None:
         try:
@@ -37,7 +37,7 @@ def editar_pedido_db(id_pedido, nuevos_datos):
         try:
             coleccion = db["pedidos"]
             resultado = coleccion.update_one({"id_pedido": id_pedido}, {"$set": nuevos_datos})
-            return " Pedido actualizado." if resultado.modified_count > 0 else "❌ No se modificó ningún pedido."
+            return " Pedido actualizado." if resultado.modified_count > 0 else " No se modificó ningún pedido."
         except Exception as e:
             print(f" Error al editar pedido: {e}")
             return None

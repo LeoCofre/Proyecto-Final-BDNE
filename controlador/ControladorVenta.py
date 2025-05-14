@@ -2,7 +2,7 @@ from modelo.ConexionNOSQL import conectar_mongodb
 from modelo.Venta import Venta
 
 def agregar_venta_db(venta):
-    """Agrega una venta a la base de datos MongoDB."""
+    #Agrega una venta a la base de datos MongoDB.
     db = conectar_mongodb()
     if db is not None:
         try:
@@ -15,7 +15,7 @@ def agregar_venta_db(venta):
         print(" No se pudo conectar a la base de datos.")
 
 def buscar_venta_db(id_venta):
-    """Busca una venta en MongoDB por su ID manual."""
+    #Busca una venta en MongoDB por su ID manual.
     db = conectar_mongodb()
     if db is not None:
         try:
@@ -30,7 +30,7 @@ def buscar_venta_db(id_venta):
         return None
 
 def editar_venta_db(id_venta, nuevos_datos):
-    """Edita una venta en MongoDB usando el ID manual."""
+    #Edita una venta en MongoDB usando el ID manual.
     db = conectar_mongodb()
     if db is not None:
         try:
@@ -45,7 +45,7 @@ def editar_venta_db(id_venta, nuevos_datos):
         return None
 
 def eliminar_venta_db(id_venta):
-    """Elimina una venta de la base de datos MongoDB por su ID."""
+    #Elimina una venta de la base de datos MongoDB por su ID.
     db = conectar_mongodb()
     if db is not None:
         try:

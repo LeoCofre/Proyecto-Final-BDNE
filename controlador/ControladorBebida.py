@@ -20,7 +20,6 @@ def agregar_bebida_db(bebida):
         cursor.close()
         conn.close()
 
-
 def buscar_bebida_db(nombre_bebida):
     conn=conectar()
     try:
@@ -44,8 +43,6 @@ def buscar_bebida_db(nombre_bebida):
         cursor.close()  
         conn.close()
 
-
-    
 def editar_bebida_db(bebida):
     conn = conectar()
     try:

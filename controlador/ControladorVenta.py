@@ -8,11 +8,11 @@ def agregar_venta_db(venta):
         try:
             coleccion = db["ventas"]
             coleccion.insert_one(venta.to_dict())  # Convertimos el objeto a diccionario
-            print("✅ Venta ingresada con éxito.")
+            print(" Venta ingresada con éxito.")
         except Exception as e:
-            print(f"❌ Error al agregar venta: {e}")
+            print(f" Error al agregar venta: {e}")
     else:
-        print("❌ No se pudo conectar a la base de datos.")
+        print(" No se pudo conectar a la base de datos.")
 
 def buscar_venta_db(id_venta):
     """Busca una venta en MongoDB por su ID manual."""
@@ -23,10 +23,10 @@ def buscar_venta_db(id_venta):
             venta = coleccion.find_one({"id_venta": id_venta})  # Buscamos por `id_venta`
             return venta if venta else None  # Devuelve None si no encuentra la venta
         except Exception as e:
-            print(f"❌ Error al buscar venta: {e}")
+            print(f" Error al buscar venta: {e}")
             return None
     else:
-        print("❌ No se pudo conectar a la base de datos.")
+        print(" No se pudo conectar a la base de datos.")
         return None
 
 def editar_venta_db(id_venta, nuevos_datos):
@@ -36,12 +36,12 @@ def editar_venta_db(id_venta, nuevos_datos):
         try:
             coleccion = db["ventas"]
             resultado = coleccion.update_one({"id_venta": id_venta}, {"$set": nuevos_datos})
-            return "✅ Venta actualizada." if resultado.modified_count > 0 else "❌ No se modificó ninguna venta."
+            return " Venta actualizada." if resultado.modified_count > 0 else " No se modificó ninguna venta."
         except Exception as e:
-            print(f"❌ Error al editar venta: {e}")
+            print(f" Error al editar venta: {e}")
             return None
     else:
-        print("❌ No se pudo conectar a la base de datos.")
+        print(" No se pudo conectar a la base de datos.")
         return None
 
 def eliminar_venta_db(id_venta):
@@ -51,10 +51,10 @@ def eliminar_venta_db(id_venta):
         try:
             coleccion = db["ventas"]
             resultado = coleccion.delete_one({"id_venta": id_venta})  # Eliminar por `id_venta`
-            return "✅ Venta eliminada." if resultado.deleted_count > 0 else "❌ No se encontró la venta."
+            return " Venta eliminada." if resultado.deleted_count > 0 else " No se encontró la venta."
         except Exception as e:
-            print(f"❌ Error al eliminar venta: {e}")
+            print(f" Error al eliminar venta: {e}")
             return None
     else:
-        print("❌ No se pudo conectar a la base de datos.")
+        print(" No se pudo conectar a la base de datos.")
         return None

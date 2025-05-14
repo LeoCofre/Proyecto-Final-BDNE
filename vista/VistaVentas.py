@@ -10,7 +10,7 @@ def menu_ventas():
     print("5.- Volver al Menú Principal")
     print("=========================")
 
-    opcion = int(input("=== Elija una opción ==="))
+    opcion = int(input("=== Elija una opción === : "))
     while True:
         if opcion == 1:
             registrar_venta()
@@ -23,7 +23,7 @@ def menu_ventas():
         elif opcion == 5:
             break
         else:
-            print("❌ Opción no válida. Intente de nuevo.")
+            print(" Opción no válida. Intente de nuevo.")
 
         
 def registrar_venta():
@@ -48,7 +48,7 @@ def registrar_venta():
     
     agregar_venta_db(venta)
 
-    print("\n✅ Venta registrada con éxito.")
+    print("\n Venta registrada con éxito.")
     menu_ventas()  # Vuelve al menú automáticamente
 
 
@@ -66,12 +66,12 @@ def buscar_venta():
         print(f"Nombre Vendedor: {venta['vendedor']['nombre_vendedor']}")
         print(f"Total Venta: {venta['total']}")
         
-        print("\n📦 Productos:")
+        print("\n Productos:")
         for producto in venta["productos"]:
             print(f"➡ {producto['nombre_producto']} | Cantidad: {producto['cantidad']} | Precio: ${producto['precio_unitario']}")
 
     else:
-        print("❌ No se encontró la venta en la base de datos.")
+        print(" No se encontró la venta en la base de datos.")
 
     menu_ventas()
 
@@ -82,7 +82,7 @@ def modificar_venta():
         venta = buscar_venta_db(id_venta)
 
         if not venta or not isinstance(venta, dict):
-            print("❌ No se encontró una venta con ese ID.")
+            print(" No se encontró una venta con ese ID.")
             return
 
         print("\nVenta encontrada:")
@@ -97,12 +97,12 @@ def modificar_venta():
 
         if cambios:
             editar_venta_db(id_venta, cambios)
-            print("✅ Venta modificada exitosamente.")
+            print(" Venta modificada exitosamente.")
         else:
             print("⚠ No se realizó ninguna modificación.")
 
     except Exception as e:
-        print(f"❌ Error al editar la venta: {e}")
+        print(f" Error al editar la venta: {e}")
     menu_ventas()    
 
 
@@ -112,17 +112,17 @@ def eliminar_venta():
         venta = buscar_venta_db(id_venta)
 
         if not venta:
-            print("❌ No se encontró la venta.")
+            print(" No se encontró la venta.")
             return
 
         confirmar = input("¿Está seguro que desea eliminar esta venta? (s/n): ")
 
         if confirmar.lower() == 's':
             eliminar_venta_db(id_venta)
-            print("✅ Venta eliminada exitosamente.")
+            print(" Venta eliminada exitosamente.")
         else:
             print("Operación cancelada.")
 
     except Exception as e:
-        print(f"❌ Error al eliminar la venta: {e}")
+        print(f" Error al eliminar la venta: {e}")
     menu_ventas()

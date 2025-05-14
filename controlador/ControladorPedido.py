@@ -8,11 +8,11 @@ def agregar_pedido_db(pedido):
         try:
             coleccion = db["pedidos"]
             coleccion.insert_one(pedido.to_dict())  # Convertimos el objeto a diccionario
-            print("✅ Pedido ingresado con éxito.")
+            print(" Pedido ingresado con éxito.")
         except Exception as e:
-            print(f"❌ Error al agregar pedido: {e}")
+            print(f" Error al agregar pedido: {e}")
     else:
-        print("❌ No se pudo conectar a la base de datos.")
+        print(" No se pudo conectar a la base de datos.")
 
 def buscar_pedido_db(id_pedido):
     """Busca un pedido en MongoDB por su ID manual."""
@@ -23,10 +23,10 @@ def buscar_pedido_db(id_pedido):
             pedido = coleccion.find_one({"id_pedido": id_pedido})  # Ahora buscamos por `id_pedido`
             return pedido if pedido else None  # Devuelve None si no encuentra el pedido
         except Exception as e:
-            print(f"❌ Error al buscar pedido: {e}")
+            print(f" Error al buscar pedido: {e}")
             return None
     else:
-        print("❌ No se pudo conectar a la base de datos.")
+        print(" No se pudo conectar a la base de datos.")
         return None
 
 
@@ -37,12 +37,12 @@ def editar_pedido_db(id_pedido, nuevos_datos):
         try:
             coleccion = db["pedidos"]
             resultado = coleccion.update_one({"id_pedido": id_pedido}, {"$set": nuevos_datos})
-            return "✅ Pedido actualizado." if resultado.modified_count > 0 else "❌ No se modificó ningún pedido."
+            return " Pedido actualizado." if resultado.modified_count > 0 else "❌ No se modificó ningún pedido."
         except Exception as e:
-            print(f"❌ Error al editar pedido: {e}")
+            print(f" Error al editar pedido: {e}")
             return None
     else:
-        print("❌ No se pudo conectar a la base de datos.")
+        print(" No se pudo conectar a la base de datos.")
         return None
 
 def eliminar_pedido_db(id_pedido):
@@ -52,12 +52,11 @@ def eliminar_pedido_db(id_pedido):
         try:
             coleccion = db["pedidos"]
             resultado = coleccion.delete_one({"id_pedido": id_pedido})  # Eliminar por `id_pedido`
-            return "✅ Pedido eliminado." if resultado.deleted_count > 0 else "❌ No se encontró el pedido."
+            return " Pedido eliminado." if resultado.deleted_count > 0 else " No se encontró el pedido."
         except Exception as e:
-            print(f"❌ Error al eliminar pedido: {e}")
+            print(f" Error al eliminar pedido: {e}")
             return None
     else:
-        print("❌ No se pudo conectar a la base de datos.")
+        print(" No se pudo conectar a la base de datos.")
         return None
-
 

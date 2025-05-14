@@ -45,7 +45,7 @@ def ingresar_pedido():
     
     agregar_pedido_db(pedido)
 
-    print("\n✅ Pedido registrado con éxito.")
+    print("\n Pedido registrado con éxito.")
     menu_pedidos()  # Vuelve al menú automáticamente
 
 
@@ -70,7 +70,7 @@ def buscar_pedido():
         print(f"Precio Unitario: {pedido['detalles']['precio_unitario']}")
         print(f"Total: {pedido['detalles']['cantidad'] * pedido['detalles']['precio_unitario']}")
     else:
-        print("❌ No se encontró el pedido en la base de datos.")
+        print(" No se encontró el pedido en la base de datos.")
 
     menu_pedidos()
 
@@ -81,7 +81,7 @@ def modificar_pedido():
         pedido = buscar_pedido_db(id_pedido)
 
         if not pedido or not isinstance(pedido, dict):
-            print("❌ No se encontró un pedido con ese ID.")
+            print(" No se encontró un pedido con ese ID.")
             return
 
         print("\nPedido encontrado:")
@@ -98,12 +98,12 @@ def modificar_pedido():
 
         if cambios:
             editar_pedido_db(id_pedido, cambios)
-            print("✅ Pedido modificado exitosamente.")
+            print(" Pedido modificado exitosamente.")
         else:
             print("⚠ No se realizó ninguna modificación.")
 
     except Exception as e:
-        print(f"❌ Error al editar el pedido: {e}")
+        print(f" Error al editar el pedido: {e}")
     menu_pedidos()    
 
 
@@ -113,17 +113,17 @@ def eliminar_pedido():
         pedido = buscar_pedido_db(id_pedido)
 
         if not pedido:
-            print("❌ No se encontró el pedido.")
+            print(" No se encontró el pedido.")
             return
 
         confirmar = input("¿Está seguro que desea eliminar este pedido? (s/n): ")
 
         if confirmar.lower() == 's':
             eliminar_pedido_db(id_pedido)
-            print("✅ Pedido eliminado exitosamente.")
+            print(" Pedido eliminado exitosamente.")
         else:
             print("Operación cancelada.")
 
     except Exception as e:
-        print(f"❌ Error al eliminar el pedido: {e}")
+        print(f" Error al eliminar el pedido: {e}")
     menu_pedidos()

@@ -93,7 +93,7 @@ def mostrar_pedidos():
     else:
         print(pedidos)  # Mensaje si no hay pedidos
 
-    menu_pedidos()
+    return
 
 
 def modificar_pedido():

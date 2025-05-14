@@ -69,7 +69,7 @@ def mostrar_bebidas():
     else:
         print(bebidas)  # Mensaje si no hay bebidas registradas
 
-    menu_bebidas()
+    return
 
 
 def modificar_bebida():

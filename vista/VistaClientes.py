@@ -9,7 +9,7 @@ def menu_clientes():
         print("3.- Mostrar Clientes")
         print("4.- Modificar")
         print("5.- Eliminar")
-        print("5.- Volver al Menú Principal")
+        print("6.- Volver al Menú Principal")
         print("=========================")
         
         opcion = input("Ingrese una opción: ")
@@ -67,7 +67,7 @@ def mostrar_clientes():
     else:
         print(clientes)  # Mensaje si no hay clientes registrados
 
-    menu_clientes()
+    return
 
 def modificar_cliente():
     try:
@@ -76,9 +76,16 @@ def modificar_cliente():
         if not cliente:
             print("No se encontro el cliente con ese rut")
             return
+        print("\n=== Cliente Encontrado ===")
+        print(f"ID Cliente: {cliente.get_id_cliente()}")
+        print(f"Nombre: {cliente.get_nombres()}")
+        print(f"Apellido: {cliente.get_apellidos()}")
+        print(f"Rut: {cliente.get_rut()}")
+        print(f"Fecha de Nacimiento: {cliente.get_fecha_nacimiento()}")
+        print(f"Dirección: {cliente.get_direccion()}")
+        print(f"Teléfono: {cliente.get_telefono()}")
+        print(f"Correo: {cliente.get_correo()}\n")  
         
-        print(f"Cliente encontrado:ID: {cliente.get_id_cliente()},Nombre: {cliente.get_nombres()},Apellido: {cliente.get_apellidos()},Rut: {cliente.get_rut(),}"
-              f"Fecha Nacimiento: {cliente.get_fecha_nacimiento()},Direccion: {cliente.get_direccion()},Telefono: {cliente.get_telefono()},Correo: {cliente.get_correo()}")
         nuevo_nombre = input("Ingrese el nuevo nombre del cliente: ")
         nuevo_apellido = input("Ingrese el nuevo apellido del cliente: ")
         nuevo_rut = input("Ingrese el nuevo RUT del cliente: ")

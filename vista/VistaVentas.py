@@ -93,11 +93,11 @@ def mostrar_ventas():
 
             print("\n Productos:")
             for producto in venta["productos"]:
-                print(f"➡ {producto['nombre_producto']} | Cantidad: {producto['cantidad']} | Precio: ${producto['precio_unitario']}")
+                print(f"{producto['nombre_producto']} | Cantidad: {producto['cantidad']} | Precio: ${producto['precio_unitario']}")
     else:
         print(ventas)  # Mensaje si no hay ventas
 
-    menu_ventas()
+    return
 
 def modificar_venta():
     try:

@@ -68,7 +68,7 @@ def mostrar_vendedores():
     else:
         print(vendedores)  # Mensaje si no hay vendedores registrados
 
-    menu_vendedores()
+    return
 
 
 def editar_vendedor():
@@ -79,8 +79,16 @@ def editar_vendedor():
             print("No se encontro el vendedor con ese rut")
             return
         
-        print(f"vendedor encontrado:ID: {vendedor.get_id_vendedor()},Nombre: {vendedor.get_nombres()},Apellido: {vendedor.get_apellidos()},Rut: {vendedor.get_rut(),}"
-              f"Fecha Nacimiento: {vendedor.get_fecha_nacimiento()},Direccion: {vendedor.get_direccion()},Telefono: {vendedor.get_telefono()},Correo: {vendedor.get_correo()}")
+        print("\n=== Vendedor Encontrado ===")
+        print(f"ID: {vendedor.get_id_vendedor()}")
+        print(f"Nombre: {vendedor.get_nombres()}")
+        print(f"Apellido: {vendedor.get_apellidos()}")
+        print(f"Rut: {vendedor.get_rut()}")
+        print(f"Fecha de Nacimiento: {vendedor.get_fecha_nacimiento()}")
+        print(f"Dirección: {vendedor.get_direccion()}")
+        print(f"Teléfono: {vendedor.get_telefono()}")
+        print(f"Correo: {vendedor.get_correo()}\n")  
+
         nuevo_nombre = input("Ingrese el nuevo nombre del vendedor: ")
         nuevo_apellido = input("Ingrese el nuevo apellido del vendedor: ")
         nuevo_rut = input("Ingrese el nuevo RUT del vendedor: ")

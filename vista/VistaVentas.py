@@ -2,17 +2,18 @@ from modelo.Venta import Venta
 from controlador.ControladorVenta import agregar_venta_db, buscar_venta_db, editar_venta_db, eliminar_venta_db, listar_ventas_db
 
 def menu_ventas():
-    print("===== Menú Ventas =====")
-    print("1.- Registrar Venta")
-    print("2.- Buscar Venta")
-    print("3.- Mostrar Ventas")
-    print("4.- Modificar Venta")
-    print("5.- Eliminar Venta")
-    print("6.- Volver al Menú Principal")
-    print("=========================")
-
-    opcion = int(input("=== Elija una opción === : "))
     while True:
+        print("===== Menú Ventas =====")
+        print("1.- Registrar Venta")
+        print("2.- Buscar Venta")
+        print("3.- Mostrar Ventas")
+        print("4.- Modificar Venta")
+        print("5.- Eliminar Venta")
+        print("6.- Volver al Menú Principal")
+        print("=========================")
+
+        opcion = int(input("=== Elija una opción === : "))
+            
         if opcion == 1:
             registrar_venta()
         elif opcion == 2:
@@ -24,7 +25,7 @@ def menu_ventas():
         elif opcion == 5:
             eliminar_venta()       
         elif opcion == 6:
-            break
+            return
         else:
             print(" Opción no válida. Intente de nuevo.")
 
@@ -97,8 +98,8 @@ def mostrar_ventas():
                 print("==================")
     else:
         print(ventas)  # Mensaje si no hay ventas
-
-    menu_ventas()
+    return
+    
 
 def modificar_venta():
     try:

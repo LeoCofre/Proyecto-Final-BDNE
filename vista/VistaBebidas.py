@@ -4,16 +4,17 @@ from controlador.ControladorBebida import agregar_bebida_db, buscar_bebida_db, e
 
 def menu_bebidas():
     while True:
-        print("\n===== Menú Bebidas =====")
-        print("1.- Ingresar ")
-        print("2.- Buscar")
-        print("3.- Mostrar Bebidas")
-        print("4.- Modificar")
-        print("5.- Eliminar")
-        print("6.- Volver al Menú Principal")
-        print("=========================")
+        print("\n🍹  ===== Menú Bebidas =====  🍹")
+        print("1️⃣  ➕  Agregar Bebida")
+        print("2️⃣  🔍  Buscar Bebida")
+        print("3️⃣  📜  Mostrar Bebidas")
+        print("4️⃣  ✏️  Modificar Bebida")
+        print("5️⃣  ❌  Eliminar Bebida")
+        print("6️⃣  🔙  Volver al Menú Principal")
+        print("===============================")
 
-        opcion = input("Ingrese una opción: ")
+        opcion = input("🔍  Ingrese una opción: ")
+
         if opcion == "1":
             agregar_bebida()
         elif opcion == "2":
@@ -25,9 +26,10 @@ def menu_bebidas():
         elif opcion == "5":
             eliminar_bebida()  
         elif opcion == "6":
-            break
+            return  
         else:
-            print("Opción no válida. Intente de nuevo.")         
+            print("⚠️  Opción no válida. Intente de nuevo.")
+      
 
 def agregar_bebida():
     nombre = input("Ingrese el nombre de la bebida: ")  
@@ -40,37 +42,43 @@ def agregar_bebida():
     agregar_bebida_db(bebida)
 
 def buscar_bebida():
-    nombre_bebida = input("Ingrese nombre de la bebida: ")
-    buscar_bebida = buscar_bebida_db(nombre_bebida)
-    if buscar_bebida:
-        print("Bebida encontrada")
-        print(f"Nombre:{buscar_bebida.get_nombre()}")
-        print(f"Precio:{buscar_bebida.get_precio()}")
-        print(f"Categoria:{buscar_bebida.get_categoria()}")
-        print(f"Cantidad:{buscar_bebida.get_cantidad()}")
+    nombre_bebida = input("🔍  Ingrese el nombre de la bebida: ")
+    bebida_encontrada = buscar_bebida_db(nombre_bebida)
+    
+    if bebida_encontrada:
+        print("\n✅  Bebida encontrada:")
+        print("🏷️  Nombre:", bebida_encontrada.get_nombre())
+        print("💰  Precio: $", bebida_encontrada.get_precio())
+        print("📦  Categoría:", bebida_encontrada.get_categoria())
+        print("🔢  Cantidad disponible:", bebida_encontrada.get_cantidad())
+        print("───────────────────────")
     else:
-        print("No se encontró Bebida ingresada")    
+        print("⚠️  No se encontró la bebida ingresada.")
+
+    return bebida_encontrada
+  
  
 
  
 
 def mostrar_bebidas():
-    print("\n--- Listado de Bebidas ---")
+    print("\n🍹  --- Listado de Bebidas ---  🍹")
     bebidas = listar_bebidas_db()
 
     if isinstance(bebidas, list):
         for bebida in bebidas:
-            print(f"\nID Bebida: {bebida[0]}")
-            print(f"Nombre: {bebida[1]}")
-            print(f"Precio: ${bebida[2]}")
-            print(f"Categoría: {bebida[3]}")
-            print(f"Descripción: {bebida[4]}")
-            print(f"Cantidad disponible: {bebida[5]}")
-            print("==================")
+            print("\n📌  ID Bebida:", bebida[0])
+            print("🏷️  Nombre:", bebida[1])
+            print("💰  Precio: $", bebida[2])
+            print("📦  Categoría:", bebida[3])
+            print("📝  Descripción:", bebida[4])
+            print("🔢  Cantidad disponible:", bebida[5])
+            print("───────────────────────")
     else:
-        print(bebidas)  # Mensaje si no hay bebidas registradas
+        print("⚠️  No hay bebidas registradas.")
 
     return
+
 
 
 def modificar_bebida():

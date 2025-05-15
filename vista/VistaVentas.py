@@ -3,31 +3,32 @@ from controlador.ControladorVenta import agregar_venta_db, buscar_venta_db, edit
 
 def menu_ventas():
     while True:
-        print("===== Menú Ventas =====")
-        print("1.- Registrar Venta")
-        print("2.- Buscar Venta")
-        print("3.- Mostrar Ventas")
-        print("4.- Modificar Venta")
-        print("5.- Eliminar Venta")
-        print("6.- Volver al Menú Principal")
-        print("=========================")
+        print("\n💰  ===== Menú Ventas =====  💰")
+        print("1️⃣  ➕  Registrar Venta")
+        print("2️⃣  🔍  Buscar Venta")
+        print("3️⃣  📜  Mostrar Ventas")
+        print("4️⃣  ✏️  Modificar Venta")
+        print("5️⃣  ❌  Eliminar Venta")
+        print("6️⃣  🔙  Volver al Menú Principal")
+        print("===============================")
 
-        opcion = int(input("=== Elija una opción === : "))
-            
-        if opcion == 1:
+        opcion = input("🔍  Ingrese una opción: ")
+
+        if opcion == "1":
             registrar_venta()
-        elif opcion == 2:
+        elif opcion == "2":
             buscar_venta()
-        elif opcion == 3:
+        elif opcion == "3":
             mostrar_ventas()
-        elif opcion == 4:
+        elif opcion == "4":
             modificar_venta()
-        elif opcion == 5:
-            eliminar_venta()       
-        elif opcion == 6:
-            return
+        elif opcion == "5":
+            eliminar_venta()
+        elif opcion == "6":
+            return  # 🔙 Permite regresar correctamente sin quedar atrapado en el menú
         else:
-            print(" Opción no válida. Intente de nuevo.")
+            print("⚠️  Opción no válida. Intente de nuevo.")
+
 
         
 def registrar_venta():
@@ -57,48 +58,48 @@ def registrar_venta():
 
 
 def buscar_venta():
-    print("\n--- Buscar Venta ---")
-    id_venta = input("Ingrese el ID de la venta a buscar: ")
+    print("\n💰  --- Buscar Venta ---  💰")
+    id_venta = input("🔍  Ingrese el ID de la venta a buscar: ")
     venta = buscar_venta_db(id_venta)
 
     if venta and isinstance(venta, dict):
-        print("\n=== Venta Encontrada ===")
-        print(f"Fecha: {venta['fecha']}")
-        print(f"ID Cliente: {venta['cliente']['id_cliente']}")
-        print(f"Nombre Cliente: {venta['cliente']['nombre_cliente']}")
-        print(f"ID Vendedor: {venta['vendedor']['id_vendedor']}")
-        print(f"Nombre Vendedor: {venta['vendedor']['nombre_vendedor']}")
-        print(f"Total Venta: {venta['total']}")
+        print("\n✅  Venta encontrada:")
+        print("📅  Fecha:", venta["fecha"])
+        print("👤  Cliente:", venta["cliente"]["nombre_cliente"], "| ID:", venta["cliente"]["id_cliente"])
+        print("🏪  Vendedor:", venta["vendedor"]["nombre_vendedor"], "| ID:", venta["vendedor"]["id_vendedor"])
+        print("💲  Total Venta: $", venta["total"])
         
-        print("\n Productos:")
+        print("\n🛍️  Productos:")
         for producto in venta["productos"]:
-            print(f"➡ {producto['nombre_producto']} | Cantidad: {producto['cantidad']} | Precio: ${producto['precio_unitario']}")
-
+            print(f"📦  {producto['nombre_producto']} | 🛒 Cantidad: {producto['cantidad']} | 💰 Precio: ${producto['precio_unitario']}")
+        print("───────────────────────")
     else:
-        print(" No se encontró la venta en la base de datos.")
+        print("⚠️  No se encontró la venta en la base de datos.")
 
-    menu_ventas()
+    return
+
 
  
 
 def mostrar_ventas():
-    print("\n--- Listado de Ventas ---")
+    print("\n💰  --- Listado de Ventas ---  💰")
     ventas = listar_ventas_db()
 
     if isinstance(ventas, list):
         for venta in ventas:
-            print(f"\n ID Venta: {venta['id_venta']}")
-            print(f"Fecha: {venta['fecha']}")
-            print(f"Cliente: {venta['cliente']['nombre_cliente']}")
-            print(f"Total: ${venta['total']}")
-
-            print("\n Productos:")
+            print("\n📌  ID Venta:", venta["id_venta"])
+            print("📅  Fecha:", venta["fecha"])
+            print("👤  Cliente:", venta["cliente"]["nombre_cliente"])
+            print("💲  Total: $", venta["total"])
+            print("\n🛍️  Productos:")
             for producto in venta["productos"]:
-                print(f"{producto['nombre_producto']} | Cantidad: {producto['cantidad']} | Precio: ${producto['precio_unitario']}")
-                print("==================")
+                print(f"📦  {producto['nombre_producto']} | 🛒 Cantidad: {producto['cantidad']} | 💰 Precio: ${producto['precio_unitario']}")
+            print("───────────────────────")
     else:
-        print(ventas)  # Mensaje si no hay ventas
+        print("⚠️  No hay ventas registradas.")
+
     return
+
     
 
 def modificar_venta():

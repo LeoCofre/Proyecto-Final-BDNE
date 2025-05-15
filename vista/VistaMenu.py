@@ -11,16 +11,17 @@ def limpiar_consola():
 
 def mostrar_menu_principal():
     limpiar_consola()
-    print("##### Menu Principal ##### ")
-    print("____Elija una opción____")
-    print("1.- Menu Clientes")
-    print("2.- Menu Bebidas")
-    print("3.- Menu Vendedor")
-    print("4.- Menu Pedido")
-    print("5.- Menu Ventas ")
-    print("===========================")
-    opcion = int(input("Ingrese una opcion: "))
-    return opcion
+    print("🛒  ##### Menú Principal #####  🛒")
+    print("\n📌  Elija una opción:")
+    print("1️⃣  👥  Menú Clientes")
+    print("2️⃣  🍹  Menú Bebidas")
+    print("3️⃣  🏪  Menú Vendedor")
+    print("4️⃣  📦  Menú Pedido")
+    print("5️⃣  💰  Menú Ventas")
+    print("===============================")
+    
+    opcion = input("🔍  Ingrese una opción: ")
+    return int(opcion)
 
     
 def iniciar_menu():

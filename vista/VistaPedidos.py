@@ -3,31 +3,32 @@ from controlador.ControladorPedido import agregar_pedido_db, buscar_pedido_db, e
 
 def menu_pedidos():
     while True:
-        print("=====Menu pedidos=====")
-        print("1.- Ingresar Pedido ")
-        print("2.- Buscar Pedido")
-        print("3.- Mostrar Pedidos ")
-        print("4.- Modificar Pedido")
-        print("5.- Eliminar Pedido")
-        print("6.- Volver al Menú Principal")
-        print("=========================")
+        print("\n📦  ===== Menú Pedidos =====  📦")
+        print("1️⃣  ➕  Ingresar Pedido")
+        print("2️⃣  🔍  Buscar Pedido")
+        print("3️⃣  📜  Mostrar Pedidos")
+        print("4️⃣  ✏️   Modificar Pedido")
+        print("5️⃣  ❌  Eliminar Pedido")
+        print("6️⃣  🔙  Volver al Menú Principal")
+        print("===============================")
 
-        opcion = int(input("Ingrese una opción: "))
-   
-        if opcion == 1:
+        opcion = input("🔍  Ingrese una opción: ")
+
+        if opcion == "1":
             ingresar_pedido()
-        elif opcion == 2:
+        elif opcion == "2":
             buscar_pedido()
-        elif opcion == 3:
+        elif opcion == "3":
             mostrar_pedidos()
-        elif opcion == 4:
+        elif opcion == "4":
             modificar_pedido()
-        elif opcion == 5:
-            eliminar_pedido()       
-        elif opcion == 6:
-            break
+        elif opcion == "5":
+            eliminar_pedido()
+        elif opcion == "6":
+            return  
         else:
-            print("Opción no válida. Intente de nuevo.")
+            print("⚠️  Opción no válida. Intente de nuevo.")
+
 
         
 def ingresar_pedido():
@@ -54,29 +55,28 @@ def ingresar_pedido():
 
 
 def buscar_pedido():
-    print("\n--- Buscar Pedido ---")
-    id_pedido = input("Ingrese el ID del pedido a buscar: ")
+    print("\n📦  --- Buscar Pedido ---  📦")
+    id_pedido = input("🔍  Ingrese el ID del pedido a buscar: ")
     pedido = buscar_pedido_db(id_pedido)  # Este devuelve un diccionario, no un objeto `Pedido`
 
     if pedido and isinstance(pedido, dict):  # Verificamos que sea un pedido válido
-        print("\n=== Pedido Encontrado ===")
-        print(f"Fecha: {pedido['fecha']}")
-        print(f"ID Cliente: {pedido['cliente']['id_cliente']}")
-        print(f"Nombre Cliente: {pedido['cliente']['nombre_cliente']}")
-        print(f"Teléfono: {pedido['cliente']['telefono']}")
-        print(f"Correo: {pedido['cliente']['correo']}")
-        print(f"ID Vendedor: {pedido['vendedor']['id_vendedor']}")
-        print(f"Nombre Vendedor: {pedido['vendedor']['nombre_vendedor']}")
-        print(f"Estado: {pedido['estado']}")
-        print(f"ID Bebida: {pedido['detalles']['id_bebida']}")
-        print(f"Nombre Bebida: {pedido['detalles']['nombre_bebida']}")
-        print(f"Cantidad: {pedido['detalles']['cantidad']}")
-        print(f"Precio Unitario: {pedido['detalles']['precio_unitario']}")
-        print(f"Total: {pedido['detalles']['cantidad'] * pedido['detalles']['precio_unitario']}")
+        print("\n✅  Pedido encontrado:")
+        print("📅  Fecha:", pedido["fecha"])
+        print("👤  Cliente:", pedido["cliente"]["nombre_cliente"], "| 📞 Teléfono:", pedido["cliente"]["telefono"], "| 📧 Correo:", pedido["cliente"]["correo"])
+        print("🏪  Vendedor:", pedido["vendedor"]["nombre_vendedor"], "| ID:", pedido["vendedor"]["id_vendedor"])
+        print("📌  Estado:", pedido["estado"])
+        print("\n🍹  Bebida:")
+        print("🆔  ID Bebida:", pedido["detalles"]["id_bebida"])
+        print("🏷️  Nombre:", pedido["detalles"]["nombre_bebida"])
+        print("🔢  Cantidad:", pedido["detalles"]["cantidad"])
+        print("💰  Precio Unitario: $", pedido["detalles"]["precio_unitario"])
+        print("💲  Total: $", pedido["detalles"]["cantidad"] * pedido["detalles"]["precio_unitario"])
+        print("───────────────────────")
     else:
-        print(" No se encontró el pedido en la base de datos.")
+        print("⚠️  No se encontró el pedido en la base de datos.")
 
-    menu_pedidos()
+    return
+
 
 
 def mostrar_pedidos():
@@ -85,13 +85,14 @@ def mostrar_pedidos():
 
     if isinstance(pedidos, list):
         for pedido in pedidos:
-            print(f"\nID Pedido: {pedido['id_pedido']}")
-            print(f"Fecha: {pedido['fecha']}")
-            print(f"Cliente: {pedido['cliente']['nombre_cliente']}")
-            print(f"Estado: {pedido['estado']}")
-            print(f"Bebida: {pedido['detalles']['nombre_bebida']}")
-            print(f"Cantidad: {pedido['detalles']['cantidad']} | Precio: ${pedido['detalles']['precio_unitario']}")
+            print("\n📌 ID Pedido:", pedido['id_pedido'])
+            print("📅 Fecha:", pedido['fecha'])
+            print("👤 Cliente:", pedido['cliente']['nombre_cliente'])
+            print("📌 Estado:", pedido['estado'])
+            print("🍹 Bebida:", pedido['detalles']['nombre_bebida'])
+            print("📦 Cantidad:", pedido['detalles']['cantidad'], "| 💰 Precio: $", pedido['detalles']['precio_unitario'])
             print("==================")
+
     else:
         print(pedidos)  # Mensaje si no hay pedidos
     return

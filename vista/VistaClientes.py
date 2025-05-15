@@ -3,16 +3,16 @@ from modelo.ClienteSQL import Cliente
 
 def menu_clientes():
     while True:
-        print("\n===== Menú Clientes =====")
-        print("1.- Ingresar")
-        print("2.- Buscar")
-        print("3.- Mostrar Clientes")
-        print("4.- Modificar")
-        print("5.- Eliminar")
-        print("6.- Volver al Menú Principal")
-        print("=========================")
-        
-        opcion = input("Ingrese una opción: ")
+        print("\n👥  ===== Menú Clientes =====  👥")
+        print("1️⃣  ➕  Agregar Cliente")
+        print("2️⃣  🔍  Buscar Cliente")
+        print("3️⃣  📜  Mostrar Clientes")
+        print("4️⃣  ✏️  Modificar Cliente")
+        print("5️⃣  ❌  Eliminar Cliente")
+        print("6️⃣  🔙  Volver al Menú Principal")
+        print("===============================")
+
+        opcion = input("🔍  Ingrese una opción: ")
 
         if opcion == "1":
             ingresar_cliente()
@@ -25,9 +25,10 @@ def menu_clientes():
         elif opcion == "5":
             eliminar_cliente()
         elif opcion == "6":
-            break
+            return   
         else:
-            print("Opción no válida. Intente de nuevo.")
+            print("⚠️  Opción no válida. Intente de nuevo.")
+
 
 def ingresar_cliente():
     nombre = input("Ingrese el nombre del cliente: ")
@@ -41,33 +42,35 @@ def ingresar_cliente():
     agregar_cliente_db(cliente)
 
 def buscar_cliente():
-    rut = input("Ingrese el rut del cliente a buscar: ")
+    rut = input("🔍  Ingrese el RUT del cliente a buscar: ")
     rut_buscar = buscar_cliente_db(rut)
+    
     if rut_buscar:
-        print("El cliente existe")
-        print(f"Rut: {rut_buscar.get_rut()}")
-        print(f"Nombres: {rut_buscar.get_nombres()}")
-        print(f"Apellidos: {rut_buscar.get_apellidos()}")
+        print("\n✅  Cliente encontrado:")
+        print("🆔  RUT:", rut_buscar.get_rut())
+        print("📝  Nombre:", rut_buscar.get_nombres(), rut_buscar.get_apellidos())  # Nombre y apellido juntos
+        print("───────────────────────")
     else:
-        print("No se encontro el rut")
+        print("⚠️  No se encontró el cliente con ese RUT.")
+
     return rut_buscar
+
  
 
 def mostrar_clientes():
-    print("\n--- Listado de Clientes ---")
+    print("\n👥  --- Listado de Clientes ---  👥")
     clientes = listar_clientes_db()
 
     if isinstance(clientes, list):
         for cliente in clientes:
-            print(f"\ID Cliente: {cliente[0]}")
-            print(f"Nombre: {cliente[1]}")
-            print(f"Apellido: {cliente[2]}")
-            print(f"RUT: {cliente[3]}")
-            print(f"Teléfono: {cliente[4]}")
-            print(f"Correo:{cliente[5]}")
-            print("==================")
+            print("\n📌  ID Cliente:", cliente[0])
+            print("📝  Nombre:", cliente[1], cliente[2])  # Nombre y apellido juntos
+            print("🆔  RUT:", cliente[3])
+            print("📞  Teléfono:", cliente[4])
+            print("📧  Correo:", cliente[5])
+            print("───────────────────────")
     else:
-        print(clientes)  # Mensaje si no hay clientes registrados
+        print("⚠️  No hay clientes registrados.")
 
     return
 

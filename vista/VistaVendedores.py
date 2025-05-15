@@ -3,16 +3,16 @@ from modelo.VendedorSQL import Vendedor
 
 def menu_vendedores():
     while True:
-        print("\n===== Menú Vendedores =====")
-        print("1.- Ingresar")
-        print("2.- Buscar")
-        print("3.- Mostrar Vendedores")
-        print("4.- Modificar")
-        print("5.- Eliminar")
-        print("6.- Volver al Menú Principal")
-        print("=========================")
-        
-        opcion = input("Ingrese una opción: ")
+        print("\n🏪  ===== Menú Vendedores =====  🏪")
+        print("1️⃣  ➕  Agregar Vendedor")
+        print("2️⃣  🔍  Buscar Vendedor")
+        print("3️⃣  📜  Mostrar Vendedores")
+        print("4️⃣  ✏️  Modificar Vendedor")
+        print("5️⃣  ❌  Eliminar Vendedor")
+        print("6️⃣  🔙  Volver al Menú Principal")
+        print("===============================")
+
+        opcion = input("🔍  Ingrese una opción: ")
 
         if opcion == "1":
             ingresar_vendedor()
@@ -25,9 +25,10 @@ def menu_vendedores():
         elif opcion == "5":
             eliminar_vendedor()
         elif opcion == "6":
-            break
+            return  
         else:
-            print("Opción no válida. Intente de nuevo.")
+            print("⚠️  Opción no válida. Intente de nuevo.")
+
 
 
 def ingresar_vendedor():
@@ -42,35 +43,38 @@ def ingresar_vendedor():
     agregar_vendedor_db(vendedor)
 
 def buscar_vendedor():
-    rut = input("Ingrese el rut del vendedor a buscar: ")
-    rutbuscar = buscar_vendedor_db(rut)
-    if rutbuscar:
-        print("El vendedor existe")
-        print(f"Rut: {rutbuscar.get_rut()}")
-        print(f"Nombres: {rutbuscar.get_nombres()}")
-        print(f"Apellidos: {rutbuscar.get_apellidos()}")        
+    rut = input("🔍  Ingrese el RUT del vendedor a buscar: ")
+    vendedor_encontrado = buscar_vendedor_db(rut)
+    
+    if vendedor_encontrado:
+        print("\n✅  Vendedor encontrado:")
+        print("🆔  RUT:", vendedor_encontrado.get_rut())
+        print("📝  Nombre:", vendedor_encontrado.get_nombres(), vendedor_encontrado.get_apellidos())  # Nombre y apellido juntos
+        print("───────────────────────")
     else:
-        print("No se encontro el rut")
-    return rutbuscar
+        print("⚠️  No se encontró el vendedor con ese RUT.")
+
+    return vendedor_encontrado
+
  
 
 def mostrar_vendedores():
-    print("\n--- Listado de Vendedores ---")
+    print("\n🏪  --- Listado de Vendedores ---  🏪")
     vendedores = listar_vendedores_db()
 
     if isinstance(vendedores, list):
         for vendedor in vendedores:
-            print(f"\nID Vendedor: {vendedor[0]}")
-            print(f"Nombre: {vendedor[1]}")
-            print(f"Apellidos: {vendedor[2]}")
-            print(f"RUT: {vendedor[3]}")
-            print(f"Teléfono: {vendedor[4]}")
-            print(f"Correo: {vendedor[5]}")
-            print("==================")
+            print("\n📌  ID Vendedor:", vendedor[0])
+            print("📝  Nombre:", vendedor[1], vendedor[2])  # Nombre y apellidos juntos
+            print("🆔  RUT:", vendedor[3])
+            print("📞  Teléfono:", vendedor[4])
+            print("📧  Correo:", vendedor[5])
+            print("───────────────────────")
     else:
-        print(vendedores)  # Mensaje si no hay vendedores registrados
+        print("⚠️  No hay vendedores registrados.")
 
     return
+
 
 
 def editar_vendedor():

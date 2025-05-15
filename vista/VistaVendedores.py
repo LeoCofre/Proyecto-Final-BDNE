@@ -62,9 +62,10 @@ def mostrar_vendedores():
         for vendedor in vendedores:
             print(f"\nID Vendedor: {vendedor[0]}")
             print(f"Nombre: {vendedor[1]}")
-            print(f"RUT: {vendedor[2]}")
-            print(f"Fecha d Nacimiento: {vendedor[3]}")
-            print(f"Teléfono {vendedor[4]}")
+            print(f"Apellidos: {vendedor[2]}")
+            print(f"RUT: {vendedor[3]}")
+            print(f"Teléfono: {vendedor[4]}")
+            print(f"Correo: {vendedor[5]}")
             print("==================")
     else:
         print(vendedores)  # Mensaje si no hay vendedores registrados

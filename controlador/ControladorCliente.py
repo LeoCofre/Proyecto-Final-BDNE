@@ -46,7 +46,7 @@ def listar_clientes_db():
     try:
         if conn is not None:
             cursor = conn.cursor()
-            cursor.execute("SELECT id_cliente, nombres, rut, fecha_nacimiento, telefono FROM clientes")  # Ajustamos la consulta
+            cursor.execute("SELECT id_cliente, nombres, apellidos, rut, telefono, correo FROM clientes")  # Ajustamos la consulta
             clientes = cursor.fetchall()
 
             return clientes if clientes else "No hay clientes registrados."  # Devolvemos directamente las tuplas

@@ -46,7 +46,7 @@ def listar_vendedores_db():
     try:
         if conn is not None:
             cursor = conn.cursor()
-            cursor.execute("SELECT id_vendedor, nombres, rut, fecha_nacimiento, telefono FROM vendedores")  # Ajustamos la consulta
+            cursor.execute("SELECT id_vendedor, nombres, apellidos, rut, telefono, correo FROM vendedores")  # Ajustamos la consulta
             vendedores = cursor.fetchall()
 
             return vendedores if vendedores else "No hay vendedores registrados."  # Devolvemos directamente las tuplas

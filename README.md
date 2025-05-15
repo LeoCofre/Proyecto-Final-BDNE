@@ -1,6 +1,6 @@
 # 🛒  Sistema de Botillería
 
-Bienvenido a **Proyecto Final BDNE**, un sistema de gestión para botillerías desarrollado en Python.  
+Bienvenido al sistema de gestión para botillerías desarrollado en Python.  
 Este proyecto permite administrar **clientes, vendedores, bebidas, pedidos y ventas**, facilitando el manejo de datos mediante una base de datos relacional.
 
 ## 📌 Características

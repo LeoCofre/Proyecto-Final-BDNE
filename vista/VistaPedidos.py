@@ -85,7 +85,7 @@ def mostrar_pedidos():
 
     if isinstance(pedidos, list):
         for pedido in pedidos:
-            print(f"\n ID Pedido: {pedido['id_pedido']}")
+            print(f"\nID Pedido: {pedido['id_pedido']}")
             print(f"Fecha: {pedido['fecha']}")
             print(f"Cliente: {pedido['cliente']['nombre_cliente']}")
             print(f"Estado: {pedido['estado']}")
@@ -149,4 +149,4 @@ def eliminar_pedido():
 
     except Exception as e:
         print(f" Error al eliminar el pedido: {e}")
-    menu_pedidos()
+    return

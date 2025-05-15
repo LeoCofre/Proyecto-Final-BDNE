@@ -124,7 +124,7 @@ def modificar_venta():
             editar_venta_db(id_venta, cambios)
             print(" Venta modificada exitosamente.")
         else:
-            print("⚠ No se realizó ninguna modificación.")
+            print("No se realizó ninguna modificación.")
 
     except Exception as e:
         print(f" Error al editar la venta: {e}")
@@ -150,4 +150,4 @@ def eliminar_venta():
 
     except Exception as e:
         print(f" Error al eliminar la venta: {e}")
-    menu_ventas()
+    return

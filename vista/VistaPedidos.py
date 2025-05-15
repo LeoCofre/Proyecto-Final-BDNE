@@ -2,17 +2,18 @@ from modelo.Pedido import Pedido
 from controlador.ControladorPedido import agregar_pedido_db, buscar_pedido_db, editar_pedido_db, eliminar_pedido_db,listar_pedidos_db
 
 def menu_pedidos():
-    print("=====Menu pedidos=====")
-    print("1.- Ingresar Pedido ")
-    print("2.- Buscar Pedido")
-    print("3.- Mostrar Pedidos ")
-    print("4.- Modificar Pedido")
-    print("5.- Eliminar Pedido")
-    print("6.- Volver al Menú Principal")
-    print("=========================")
-
-    opcion = int(input("Ingrese una opción: "))
     while True:
+        print("=====Menu pedidos=====")
+        print("1.- Ingresar Pedido ")
+        print("2.- Buscar Pedido")
+        print("3.- Mostrar Pedidos ")
+        print("4.- Modificar Pedido")
+        print("5.- Eliminar Pedido")
+        print("6.- Volver al Menú Principal")
+        print("=========================")
+
+        opcion = int(input("Ingrese una opción: "))
+   
         if opcion == 1:
             ingresar_pedido()
         elif opcion == 2:
@@ -93,8 +94,8 @@ def mostrar_pedidos():
             print("==================")
     else:
         print(pedidos)  # Mensaje si no hay pedidos
-
-    menu_pedidos()
+    return
+    
 
 
 def modificar_pedido():

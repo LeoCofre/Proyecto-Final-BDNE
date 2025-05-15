@@ -61,9 +61,10 @@ def mostrar_clientes():
         for cliente in clientes:
             print(f"\ID Cliente: {cliente[0]}")
             print(f"Nombre: {cliente[1]}")
-            print(f"RUT: {cliente[2]}")
-            print(f"Fecha de Nacimiento: {cliente[3]}")
+            print(f"Apellido: {cliente[2]}")
+            print(f"RUT: {cliente[3]}")
             print(f"Teléfono: {cliente[4]}")
+            print(f"Correo:{cliente[5]}")
             print("==================")
     else:
         print(clientes)  # Mensaje si no hay clientes registrados

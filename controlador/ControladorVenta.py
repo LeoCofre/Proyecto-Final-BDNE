@@ -15,7 +15,7 @@ def agregar_venta_db(venta):
         print(" No se pudo conectar a la base de datos.")
 
 def buscar_venta_db(id_venta):
-    #Busca una venta en MongoDB por su ID manual.
+    #Busca una venta en MongoDB por su ID que ingresamos de forma manual.
     db = conectar_mongodb()
     if db is not None:
         try:
